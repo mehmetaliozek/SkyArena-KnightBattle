@@ -11,6 +11,7 @@ public class CloudSpawner : MonoBehaviour
     private const float top = 0.0f;
     private const float down = -5.0f;
 
+    // 3.75 saniyede bir bulut oluşturuyoz
     private void Update()
     {
         countdown -= Time.deltaTime;
@@ -23,7 +24,9 @@ public class CloudSpawner : MonoBehaviour
 
     private void Spawn()
     {
+        // Elimizdeki bulut spritelarından rastgele birini seçip buluta ekliyoz
         cloud.GetComponent<SpriteRenderer>().sprite = cloudSprites[Random.Range(0, cloudSprites.Length)];
+        // Bulutu rastgele bi noktada oluşturuyor
         Instantiate(cloud, new Vector3(transform.position.x, Random.Range(top, down), 0), Quaternion.identity);
     }
 
