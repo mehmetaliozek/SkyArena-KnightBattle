@@ -6,7 +6,7 @@ public class CloudSpawner : MonoBehaviour
     [SerializeField] private Sprite[] cloudSprites;
 
     private float countdown = 0;
-    private const float top = 0.0f;
+    private const float top = 5.0f;
     private const float down = -5.0f;
 
     // 3.75 saniyede bir bulut oluşturuyoz

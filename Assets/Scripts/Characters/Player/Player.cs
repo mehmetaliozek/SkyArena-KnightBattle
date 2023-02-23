@@ -3,14 +3,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player instance;
-
     [SerializeField] private Animator animator;
     private Rigidbody2D rgb;
     private Vector3 velocity;
     private float speed = 2.5f;
     private bool move = true;
 
-    void Start()
+    private void Start()
     {
         if (instance == null)
         {
@@ -20,7 +19,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -68,12 +67,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AttackStart()
+    private void AttackStart()
     {
         move = false;
     }
 
-    public void AttackEnd()
+    private void AttackEnd()
     {
         move = true;
     }
