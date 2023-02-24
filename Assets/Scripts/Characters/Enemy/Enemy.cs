@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     {
         PlayerFollow();
         TakeDamage();
+        FallDamage();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -67,8 +68,19 @@ public class Enemy : MonoBehaviour
             stats.health -= Player.instance.stats.attack;
             if (stats.health <= 0)
             {
-                Destroy(gameObject, 0.5f);
+                WaveManager.instance.aliveEnemyCount--;
+                Destroy(gameObject, 0.1f);
             }
+        }
+    }
+
+    private void FallDamage()
+    {
+        if (GetComponent<SpriteRenderer>().sortingLayerName == "Default")
+        {
+            // Düşman yok edildiğinde
+            WaveManager.instance.aliveEnemyCount--;
+            Destroy(gameObject, 2.0f);
         }
     }
 }

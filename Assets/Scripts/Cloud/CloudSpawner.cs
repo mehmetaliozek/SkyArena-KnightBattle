@@ -15,12 +15,12 @@ public class CloudSpawner : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
-            Spawn();
+            SpawnCloud();
             countdown = 3.75f;
         }
     }
 
-    private void Spawn()
+    private void SpawnCloud()
     {
         // Elimizdeki bulut spritelarından rastgele birini seçip buluta ekliyoz
         cloud.GetComponent<SpriteRenderer>().sprite = cloudSprites[Random.Range(0, cloudSprites.Length)];
