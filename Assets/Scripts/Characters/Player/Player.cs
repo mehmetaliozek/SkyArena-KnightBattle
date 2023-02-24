@@ -3,10 +3,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player instance;
+    [HideInInspector] public Stats stats;
     [SerializeField] private Animator animator;
     private Rigidbody2D rgb;
     private Vector3 velocity;
-    private float speed = 2.5f;
     private bool move = true;
 
     private void Start()
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
             instance = this;
         }
         rgb = GetComponent<Rigidbody2D>();
+        stats = GetComponent<Stats>();
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
         if (move)
         {
             velocity = new Vector3(x, y, 0f);
-            transform.position += velocity * speed * Time.deltaTime;
+            transform.position += velocity * stats.speed * Time.deltaTime;
         }
 
         //Animasyon kontrolu

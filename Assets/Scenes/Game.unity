@@ -746,6 +746,7 @@ GameObject:
   - component: {fileID: 1672509006}
   - component: {fileID: 1672509000}
   - component: {fileID: 1672509002}
+  - component: {fileID: 1672509007}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -786,6 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec966cc0448f1c847a12c26a3c5b3e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 0}
   animator: {fileID: 1672509005}
 --- !u!212 &1672509003
 SpriteRenderer:
@@ -891,3 +893,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5416667, y: 0.7916667}
   m_Direction: 0
+--- !u!114 &1672509007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672508999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9621327a0861d3e4497f03f20430f832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  attack: 10
+  defense: 0
+  speed: 2.5
+  gold: 0

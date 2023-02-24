@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public Stats stats;
     [SerializeField] private float stoppingDistance;
 
     private Transform target;
@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         target = Player.instance.GetComponent<Transform>();
+        stats = GetComponent<Stats>();
     }
 
     private void Update()
@@ -44,7 +45,7 @@ public class Enemy : MonoBehaviour
         // Aşağıdaysa bu uzaklık belirttiğimiz durma uzaklığında büyükse oyuncuya yaklaşıyor
         if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, stats.speed * Time.deltaTime);
         }
 
         if (transform.position.x - target.position.x > 0)
@@ -63,7 +64,11 @@ public class Enemy : MonoBehaviour
         // Hasar alma özelliği açık ve oyuncu mouse un sol tuşuna tıkladıysa düşman birim hasar alıyor
         if (isTakeDamage && Input.GetMouseButtonDown(0))
         {
-            // TODO: Düşman hasar yiycek
+            stats.health -= Player.instance.stats.attack;
+            if (stats.health <= 0)
+            {
+                Destroy(gameObject, 0.5f);
+            }
         }
     }
 }
