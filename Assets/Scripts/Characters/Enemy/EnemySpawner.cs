@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner instance;
     [SerializeField] private GameObject enemy;
     // Düşamların üzerinde spawnlancağı bölgenin collideri
     [SerializeField] private PolygonCollider2D spawnArea;
@@ -9,16 +10,19 @@ public class EnemySpawner : MonoBehaviour
     private bool isRunning = true;
     private float x;
     private float y;
-    private int i = 0;
+    [HideInInspector] public int createdEnemyCount = 0;
 
     private void Start()
     {
-
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
-    private void Update()
+    public void SpawnEnemy(int enemyCount)
     {
-        if (i != 5)
+        while (createdEnemyCount != enemyCount)
         {
             // Düşmanların spawnlancağı konumun x ve y sini random atıyoruz
             x = Random.Range(-10, 10);
@@ -32,9 +36,8 @@ public class EnemySpawner : MonoBehaviour
             if (spawnPosition.x == x && spawnPosition.y == y)
             {
                 Instantiate(enemy, spawnPosition, Quaternion.identity);
-                i++;
+                createdEnemyCount++;
             }
         }
-
     }
 }
