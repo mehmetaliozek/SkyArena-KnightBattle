@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
         if (isTakeDamage && Player.instance.toAttack)
         {
             stats.health -= Player.instance.stats.attack;
-            Player.instance.toAttack = !Player.instance.toAttack;
+            Player.instance.toAttack = false;
             if (stats.health <= 0)
             {
                 WaveManager.instance.aliveEnemyCount--;
