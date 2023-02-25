@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rgb;
     private Vector3 velocity;
     private bool move = true;
+    public bool toAttack = false;
 
     private void Start()
     {
@@ -70,11 +71,17 @@ public class Player : MonoBehaviour
 
     private void AttackStart()
     {
-        move = false;
+        move = !move;
+    }
+
+    private void AttackDuring()
+    {
+        toAttack = !toAttack;
     }
 
     private void AttackEnd()
     {
-        move = true;
+        move = !move;
+        toAttack = !toAttack;
     }
 }
