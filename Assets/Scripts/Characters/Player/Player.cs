@@ -71,17 +71,17 @@ public class Player : MonoBehaviour
 
     private void AttackStart()
     {
-        move = !move;
+        move = false;
     }
 
     private void AttackDuring()
     {
-        toAttack = !toAttack;
+        toAttack = true;
     }
 
     private void AttackEnd()
     {
-        move = !move;
-        toAttack = !toAttack;
+        move = true;
+        toAttack = false;
     }
 }
