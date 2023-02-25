@@ -4,9 +4,7 @@ public class Enemy : MonoBehaviour
 {
     public Stats stats;
     [SerializeField] private float stoppingDistance;
-
     private Transform target;
-
     private bool isTakeDamage = false;
 
     private void Start()
@@ -62,10 +60,11 @@ public class Enemy : MonoBehaviour
 
     private void TakeDamage()
     {
-        // Hasar alma özelliği açık ve oyuncu mouse un sol tuşuna tıkladıysa düşman birim hasar alıyor
-        if (isTakeDamage && Input.GetMouseButtonDown(0))
+        // Hasar alma özelliği açık ve oyuncu saldırı yapıyosa düşman birim hasar alıyor
+        if (isTakeDamage && Player.instance.toAttack)
         {
             stats.health -= Player.instance.stats.attack;
+            Player.instance.toAttack = !Player.instance.toAttack;
             if (stats.health <= 0)
             {
                 WaveManager.instance.aliveEnemyCount--;
