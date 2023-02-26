@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
     [HideInInspector] public Stats stats;
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
     private Rigidbody2D rgb;
     private Vector3 velocity;
     private bool move = true;

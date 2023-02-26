@@ -10,6 +10,9 @@ public class Platform : MonoBehaviour
         {
             other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
             other.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+            if(other.tag==Tags.player){
+                Player.instance.animator.SetTrigger("fallTrigger");
+            }
         }
     }
 }
