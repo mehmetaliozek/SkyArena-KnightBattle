@@ -5,7 +5,6 @@ public class Enemy : MonoBehaviour
     public Stats stats;
     [SerializeField] private float stoppingDistance;
     private Transform target;
-    private bool isTakeDamage = false;
 
     private void Start()
     {
@@ -16,26 +15,6 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         PlayerFollow();
-        TakeDamage();
-        FallDamage();
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        // Oyuncunun saldırı menziline girsiysek hasar alma özelliği açılıyor
-        if (other.tag == Tags.playerAttack)
-        {
-            isTakeDamage = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        // Oyuncunun saldırı menzilinden çıktığında hasar alma özelliği kapanıyor
-        if (other.tag == Tags.playerAttack)
-        {
-            isTakeDamage = false;
-        }
     }
 
     private void PlayerFollow()
@@ -54,26 +33,20 @@ public class Enemy : MonoBehaviour
         else
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-
         }
     }
 
-    private void TakeDamage()
+    public void TakeDamage(float damage)
     {
-        // Hasar alma özelliği açık ve oyuncu saldırı yapıyosa düşman birim hasar alıyor
-        if (isTakeDamage && Player.instance.toAttack)
+        stats.health -= damage;
+        if (stats.health <= 0)
         {
-            stats.health -= Player.instance.stats.attack;
-            Player.instance.toAttack = false;
-            if (stats.health <= 0)
-            {
-                WaveManager.instance.aliveEnemyCount--;
-                Destroy(gameObject, 0.1f);
-            }
+            WaveManager.instance.aliveEnemyCount--;
+            Destroy(gameObject, 0.1f);
         }
     }
 
-    private void FallDamage()
+    public void FallDamage()
     {
         if (GetComponent<SpriteRenderer>().sortingLayerName == "Default")
         {

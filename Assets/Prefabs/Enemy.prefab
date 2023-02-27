@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7665986230123562469}
   - component: {fileID: 7665986230123562471}
   - component: {fileID: -7637293021630487085}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  attack: 10
+  attack: 0
+  attackRange: 0
   defense: 0
   speed: 1
   gold: 0
