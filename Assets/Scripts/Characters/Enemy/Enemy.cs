@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Stats stats;
+    [HideInInspector] public Stats stats;
     [SerializeField] private float stoppingDistance;
     private Transform target;
 
