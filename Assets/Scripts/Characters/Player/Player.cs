@@ -3,12 +3,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player instance;
+    public Animator animator;
     [HideInInspector] public Stats stats;
-    [SerializeField] public Animator animator;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask enemyLayers;
     private Rigidbody2D rgb;
     private Vector3 velocity;
     private bool move = true;
-    public bool toAttack = false;
 
     private void Start()
     {
@@ -27,7 +28,6 @@ public class Player : MonoBehaviour
         float y = Input.GetAxis("Vertical");
 
         Move(x, y);
-
         Attack();
     }
 
@@ -65,7 +65,15 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            animator.SetTrigger(PlayerAnimationParametres.attackTrigger);
+            animator.SetTrigger(PlayerAnimationParametres.attack);
+
+            // Beli bir yarıçapta Enemy layerına sahip nesneleri topluyoruz
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, enemyLayers);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                // Topladığımız neslerin hepsinde TakeDamage fonskiyonunu çağırıp hasar almalarını sağlıyoz
+                enemy.GetComponent<Enemy>().TakeDamage(stats.attack);
+            }
         }
     }
 
@@ -74,14 +82,13 @@ public class Player : MonoBehaviour
         move = false;
     }
 
-    private void AttackDuring()
-    {
-        toAttack = true;
-    }
-
     private void AttackEnd()
     {
         move = true;
-        toAttack = false;
+    }
+
+    public void FallDamage()
+    {
+        animator.SetTrigger(PlayerAnimationParametres.fall);
     }
 }
