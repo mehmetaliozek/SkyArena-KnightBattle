@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
     [HideInInspector] public Stats stats;
     [SerializeField] private float stoppingDistance;
+    private bool d=true;
     private Transform target;
 
     private void Start()
@@ -39,10 +40,18 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         stats.health -= damage;
-        if (stats.health <= 0)
+        if (stats.health <= 0 && d)
         {
+            d=false;
             WaveManager.instance.aliveEnemyCount--;
-            Destroy(gameObject, 0.1f);
+            gameObject.GetComponent<Animator>().SetTrigger("Death");
+            
+        }
+        else if(stats.health>0)
+        {
+           
+            
+            gameObject.GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
 
@@ -50,9 +59,17 @@ public class Enemy : MonoBehaviour
     {
         if (GetComponent<SpriteRenderer>().sortingLayerName == "Default")
         {
-            // Düşman yok edildiğinde
+            //Düşman yok edildiğinde
             WaveManager.instance.aliveEnemyCount--;
+            
             Destroy(gameObject, 2.0f);
+            
+            
         }
+    }
+    public void Death(){
+        
+           Destroy(gameObject,0.0001f);
+    
     }
 }
