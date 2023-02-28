@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public Stats stats;
     [SerializeField] private float followingDistance;
     [SerializeField] private float stoppingDistance;
+    private Rigidbody2D rgb;
     private Vector2 moveSpot;
     private Transform target;
     private float waitTime;
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        rgb = GetComponent<Rigidbody2D>();
         moveSpot = EnemySpawner.instance.RandomPosition();
         target = Player.instance.GetComponent<Transform>();
         stats = GetComponent<Stats>();
@@ -91,6 +93,9 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                Vector3 direction = transform.position - target.position;
+                // Açısal olarak kuvvet uygulamamıza sağlıyor
+                rgb.AddForceAtPosition(direction.normalized * 100, target.position);
                 // Hasar animasyonunu tetikliyor
                 gameObject.GetComponent<Animator>().SetTrigger("Hurt");
             }
@@ -109,5 +114,10 @@ public class Enemy : MonoBehaviour
     {
         WaveManager.instance.aliveEnemyCount--;
         Destroy(gameObject, 0.1f);
+    }
+
+    public void Hurt()
+    {
+        rgb.velocity = Vector2.zero;
     }
 }
