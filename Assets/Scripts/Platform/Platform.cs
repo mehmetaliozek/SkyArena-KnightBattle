@@ -10,13 +10,16 @@ public class Platform : MonoBehaviour
         {
             other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
             other.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
-            if (other.tag == Tags.player)
+            
+            switch (other.tag)
             {
-                Player.instance.FallDamage();
-            }
-            else if (other.tag == Tags.enemy)
-            {
-                other.GetComponent<Enemy>().FallDamage();
+                case Tags.player:
+                    Player.instance.FallDamage();
+                    break;
+
+                case Tags.enemy:
+                    other.GetComponent<Enemy>().FallDamage();
+                    break;
             }
         }
     }
