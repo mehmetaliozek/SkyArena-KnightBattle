@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,6 +11,12 @@ public class Player : MonoBehaviour
     private Rigidbody2D rgb;
     private Vector3 velocity;
     private bool move = true;
+    private bool attack = true;
+    private bool roll = true;
+    private bool isHit = false;
+
+    private float currentHealth;
+    private float hit = 0.3f;
 
     private void Start()
     {
@@ -19,9 +26,9 @@ public class Player : MonoBehaviour
         }
         rgb = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>();
+        currentHealth = stats.maxHealth;
     }
 
-    // Update is called once per frame
     private void Update()
     {
         float x = Input.GetAxis("Horizontal");
@@ -29,6 +36,8 @@ public class Player : MonoBehaviour
 
         Move(x, y);
         Attack();
+        Roll();
+        Hit();
     }
 
     private void Move(float x, float y)
@@ -63,7 +72,7 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && attack)
         {
             animator.SetTrigger(PlayerAnimationParametres.attack);
 
@@ -80,15 +89,84 @@ public class Player : MonoBehaviour
     private void AttackStart()
     {
         move = false;
+        attack = false;
     }
 
     private void AttackEnd()
     {
         move = true;
+        attack = true;
+    }
+
+    private void Roll()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && roll)
+        {
+            animator.SetTrigger(PlayerAnimationParametres.roll);
+        }
+    }
+
+    private void RollStart()
+    {
+        attack = false;
+        roll = false;
+    }
+
+    private void RollEnd()
+    {
+        attack = true;
+        roll = true;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (currentHealth >= 0)
+        {
+            currentHealth -= damage;
+            isHit = true;
+            Death();
+        }
+    }
+
+    // Güncelleme gelcek
+    private void Hit()
+    {
+        if (isHit)
+        {
+            hit -= Time.deltaTime;
+            if (hit > 0.15f)
+            {
+                GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
+            }
+            else if (hit > 0)
+            {
+                GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+            }
+            else
+            {
+                hit = 0.3f;
+                isHit = false;
+            }
+        }
+    }
+
+    private void Death()
+    {
+        move = false;
+        attack = false;
+        roll = false;
+        animator.SetTrigger(PlayerAnimationParametres.death);
+    }
+
+    private void DeathEnd()
+    {
+        animator.speed = 0;
     }
 
     public void FallDamage()
     {
         animator.SetTrigger(PlayerAnimationParametres.fall);
+        attack = false;
+        roll = false;
     }
 }
