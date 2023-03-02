@@ -97,10 +97,9 @@ public class Enemy : MonoBehaviour
 
         if (currentAttackRate <= 0)
         {
-            Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers);
-            foreach (Collider2D player in hitPlayer)
+            if (Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers).Length != 0)
             {
-                player.GetComponent<Player>().TakeDamage(stats.attack);
+               Player.instance.TakeDamage(stats.attack);
             }
             currentAttackRate = stats.attackRate;
         }
@@ -143,7 +142,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 0.1f);
     }
 
-    public void Hurt()
+    public void HurtEnd()
     {
         rgb.velocity = Vector2.zero;
     }

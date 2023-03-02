@@ -8,5 +8,4 @@ public class Stats : MonoBehaviour
     public float attackRate;
     public float defense;
     public float speed;
-    public float gold;
 }

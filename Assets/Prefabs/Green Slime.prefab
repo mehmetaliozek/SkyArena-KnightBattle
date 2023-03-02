@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549538884159247145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -196,7 +196,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   followingDistance: 3
-  stoppingDistance: 1
+  stoppingDistance: 0.5
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,9 +210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
-  attack: 5
+  attack: 1
   attackRange: 0.25
-  attackRate: 2
+  attackRate: 0.5
   defense: 0
   speed: 1
   gold: 0
