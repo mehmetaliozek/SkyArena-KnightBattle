@@ -764,6 +764,7 @@ GameObject:
   - component: {fileID: 1672509005}
   - component: {fileID: 1672509006}
   - component: {fileID: 1672509000}
+  - component: {fileID: 1672509008}
   - component: {fileID: 1672509002}
   - component: {fileID: 1672509007}
   m_Layer: 11
@@ -806,7 +807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec966cc0448f1c847a12c26a3c5b3e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1672509005}
   stats: {fileID: 0}
   attackPoint: {fileID: 1099664620}
   enemyLayers:
@@ -931,7 +931,23 @@ MonoBehaviour:
   maxHealth: 100
   attack: 10
   attackRange: 0.5
-  attackRate: 0
+  attackRate: 0.5
   defense: 0
   speed: 2.5
-  gold: 0
+--- !u!114 &1672509008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672508999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98db791fc1846842bb37f676e47fb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1672509005}
+  canMove: 1
+  canAttack: 1
+  canRoll: 1
+  isDeath: 0
