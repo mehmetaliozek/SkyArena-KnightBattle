@@ -3,20 +3,28 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public Stats stats;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask playerLayers;
     [SerializeField] private float followingDistance;
     [SerializeField] private float stoppingDistance;
+    private Animator animator;
     private Rigidbody2D rgb;
     private Vector2 moveSpot;
     private Transform target;
     private float waitTime;
     private bool canTakeDamage = true;
+    private float currentHealth;
+    private float currentAttackRate;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         rgb = GetComponent<Rigidbody2D>();
         moveSpot = EnemySpawner.instance.RandomPosition();
         target = Player.instance.GetComponent<Transform>();
         stats = GetComponent<Stats>();
+        currentHealth = stats.maxHealth;
+        currentAttackRate = stats.attackRate;
     }
 
     private void Update()
@@ -64,6 +72,10 @@ public class Enemy : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, stats.speed * Time.deltaTime);
         }
+        else
+        {
+            Attack();
+        }
     }
 
     private void LookAtPlayer()
@@ -79,17 +91,32 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void Attack()
+    {
+        currentAttackRate -= Time.deltaTime;
+
+        if (currentAttackRate <= 0)
+        {
+            Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers);
+            foreach (Collider2D player in hitPlayer)
+            {
+                player.GetComponent<Player>().TakeDamage(stats.attack);
+            }
+            currentAttackRate = stats.attackRate;
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         if (canTakeDamage)
         {
-            stats.health -= damage;
-            if (stats.health <= 0)
+            currentHealth -= damage;
+            if (currentHealth <= 0)
             {
                 // Düşmanın canı sıfırın altına inince hasar yemesini ve animasyonunun tekrar tekrar tetiklenmesini önlemek için hasar alabilirliğini konrol ediyoz
                 canTakeDamage = !canTakeDamage;
                 // Ölüm animasyonunu tetikliyor
-                gameObject.GetComponent<Animator>().SetTrigger("Death");
+                animator.SetTrigger(EnemyAnimationParametres.death);
             }
             else
             {
@@ -97,7 +124,7 @@ public class Enemy : MonoBehaviour
                 // Açısal olarak kuvvet uygulamamıza sağlıyor
                 rgb.AddForceAtPosition(direction.normalized * 100, target.position);
                 // Hasar animasyonunu tetikliyor
-                gameObject.GetComponent<Animator>().SetTrigger("Hurt");
+                animator.SetTrigger(EnemyAnimationParametres.hurt);
             }
         }
     }

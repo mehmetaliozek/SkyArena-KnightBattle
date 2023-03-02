@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-    public float health;
+    public float maxHealth;
     public float attack;
     public float attackRange;
     public float attackRate;
