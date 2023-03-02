@@ -1,12 +1,6 @@
 using UnityEngine;
 
-public class Options : MonoBehaviour, IPointerEvents
+public class Options : MonoBehaviour
 {
-    public void PointerDown(GameObject btn)
-    {
-    }
 
-    public void PointerUp(GameObject btn)
-    {
-    }
 }
