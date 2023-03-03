@@ -93,4 +93,10 @@ public class PlayerAnimationEvents : MonoBehaviour
         canAttack = false;
         canRoll = false;
     }
+
+    // Ölüm animasyonu tekrar tekrar oynamaması için
+    private void DeathEnd()
+    {
+        animator.speed = 0;
+    }
 }
