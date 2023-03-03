@@ -1,19 +1,32 @@
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Sahnede bulunan Player scripti
     public static Player instance;
+
+    // Statların tutulduğu değişken
     [HideInInspector] public Stats stats;
+
+    // Saldırının gerçekleştirilceği konumun merkezi
     [SerializeField] private Transform attackPoint;
+
+    // Saldırının uygulancağı layer
     [SerializeField] private LayerMask enemyLayers;
+
+    // Oyuncunun rigidbodysi
     private Rigidbody2D rgb;
+
+    // Oyuncu yürüken verilen hız vektöru
     private Vector3 velocity;
+
+    // Oyuncunun anlık canı
     private float currentHealth;
+
+    // Oyuncunun anlık saldırı hızı
     private float nextAttackTime;
 
-    // private float hit = 0.3f;
-
+    // İlk değer atamaları
     private void Start()
     {
         if (instance == null)
@@ -30,7 +43,6 @@ public class Player : MonoBehaviour
         Move();
         Attack();
         Roll();
-        // Hit();
     }
 
     private void Move()
@@ -96,9 +108,11 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        // Anlık canımız sıfırın üzerinde olduğu sürece canımız azalıyor ve hasar animasyonu çalışıyor
         if (currentHealth > 0)
         {
             currentHealth -= damage;
+            PlayerAnimationEvents.instance.isHurt = true;
         }
         else if (!PlayerAnimationEvents.instance.isDeath)
         {
@@ -106,33 +120,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Güncelleme gelcek
-    // private void Hit()
-    // {
-    //     if (isHit)
-    //     {
-    //         hit -= Time.deltaTime;
-    //         if (hit > 0.15f)
-    //         {
-    //             GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
-    //         }
-    //         else if (hit > 0)
-    //         {
-    //             GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-    //         }
-    //         else
-    //         {
-    //             hit = 0.3f;
-    //             isHit = false;
-    //         }
-    //     }
-    // }
-
+    // Ölüm animasyonunu çalıştırıyor
     private void Death()
     {
         PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.death);
     }
 
+    // Düşüş animasyonunu çalıştırıyor
     public void FallDamage()
     {
         PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.fall);
