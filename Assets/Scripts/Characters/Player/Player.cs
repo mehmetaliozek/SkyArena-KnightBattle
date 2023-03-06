@@ -92,7 +92,8 @@ public class Player : MonoBehaviour
             foreach (Collider2D enemy in hitEnemies)
             {
                 // Topladığımız neslerin hepsinde TakeDamage fonskiyonunu çağırıp hasar almalarını sağlıyoz
-                enemy.GetComponent<Enemy>().TakeDamage(stats.attack);
+                // Enemyden miras almış class TakeDamage fonksiyonunu çalıştırması için mesaj atıyoz
+                enemy.SendMessage(EnemyFunctions.takeDamage, stats.attack);
             }
             nextAttackTime = Time.time + stats.attackRate;
         }
