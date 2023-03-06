@@ -1,48 +1,48 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     // Statların tutulduğu değişken
-    [HideInInspector] public Stats stats;
+    protected Stats stats;
 
     // Saldırının gerçekleştirilceği konumun merkezi
-    [SerializeField] private Transform attackPoint;
+    [SerializeField] protected Transform attackPoint;
 
     // Saldırının uygulancağı layer
-    [SerializeField] private LayerMask playerLayers;
+    [SerializeField] protected LayerMask playerLayers;
 
     // Oyuncuyu takip etmeye başlıycağı mesafe
-    [SerializeField] private float followingDistance;
+    [SerializeField] protected float followingDistance;
 
     // Oyuncuya en fazla yaklaşabilceği mesafe
-    [SerializeField] private float stoppingDistance;
+    [SerializeField] protected float stoppingDistance;
 
     // Düşmanın animatoru
-    private Animator animator;
+    protected Animator animator;
 
     // Düşmanın rigidbodysi
-    private Rigidbody2D rgb;
+    protected Rigidbody2D rgb;
 
     // Oyuncu takip mesafesinde değilken gitceği nokta
-    private Vector2 moveSpot;
+    protected Vector2 moveSpot;
 
     // Düşmanın takip edeceği birim
-    private Transform target;
+    protected Transform target;
 
     // Rastgele bi noktaya gittikten sonra bekliyceği süre
-    private float waitTime = 1.5f;
+    protected float waitTime = 1.5f;
 
     // Rastgele bi noktaya gittikten sonra bekliyceği anlık süre
-    private float currentWaitTime;
+    protected float currentWaitTime;
 
     // Düşmanın hasar alabilrliğini kontrol eden değişken
-    private bool canTakeDamage = true;
+    protected bool canTakeDamage = true;
 
     // Düşmanın anlık canı
-    private float currentHealth;
+    protected float currentHealth;
 
     // Düşmanın anlık saldırı hızı
-    private float currentAttackRate;
+    protected float currentAttackRate;
 
     // İlk değer atamaları
     private void Start()
@@ -56,92 +56,17 @@ public class Enemy : MonoBehaviour
         currentAttackRate = stats.attackRate;
     }
 
-    private void Update()
-    {
-        // Düşman hasar alabilirliği varsa AI çalışcak
-        if (canTakeDamage)
-        {
-            AI();
-        }
-        // Oyuncuya dönme
-        LookAtPlayer();
-    }
+    protected abstract void AI();
 
-    private void AI()
-    {
-        // Hedef birimle aralarında olan mesafe
-        float distance = Vector2.Distance(transform.position, target.position);
-        // Mesafe takip mesafesinden küçükse oyuncu takip edilcek değilse rastgele yürüycek
-        if (distance < followingDistance)
-        {
-            FollowPlayer(distance);
-        }
-        else
-        {
-            Patrol();
-        }
-    }
+    protected abstract void Patrol();
 
-    private void Patrol()
-    {
-        // Rastgele noktaya doğru hareket etme
-        transform.position = Vector2.MoveTowards(transform.position, moveSpot, stats.speed * Time.deltaTime);
+    protected abstract void FollowPlayer(float distance);
 
-        // Rastgele noktaya yakın bir konuma varınca bir süre bekleme
-        if (Vector2.Distance(transform.position, moveSpot) < 0.2f)
-        {
-            currentWaitTime -= Time.deltaTime;
-            if (currentWaitTime <= 0)
-            {
-                // Yeni bir rastgele nokta belirleme
-                moveSpot = EnemySpawner.instance.RandomPosition();
-                currentWaitTime = waitTime;
-            }
-        }
-    }
+    protected abstract void LookAtPlayer();
 
-    private void FollowPlayer(float distance)
-    {
-        // Aşağıdaysa bu uzaklık belirttiğimiz durma uzaklığında büyükse oyuncuya yaklaşıyor değilse saldırıyor
-        if (distance > stoppingDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, stats.speed * Time.deltaTime);
-        }
-        else
-        {
-            Attack();
-        }
-    }
+    protected abstract void Attack();
 
-    private void LookAtPlayer()
-    {
-        // Oyuncu düşmanın sağında mı solunda mı diye kontrol edip düşmanın yüzünü oyuncuya çeviriyor
-        if (transform.position.x - target.position.x > 0)
-        {
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-    }
-
-    public void Attack()
-    {
-        currentAttackRate -= Time.deltaTime;
-
-        if (currentAttackRate <= 0)
-        {
-            // Belirli bir yarıçapta saldırı yapacğı birim sayısı 0 değilse Oyuncuya hasar veriyor
-            if (Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers).Length != 0)
-            {
-                Player.instance.TakeDamage(stats.attack);
-            }
-            currentAttackRate = stats.attackRate;
-        }
-    }
-
-    public void TakeDamage(float damage)
+    private void TakeDamage(float damage)
     {
         if (canTakeDamage)
         {
@@ -165,21 +90,21 @@ public class Enemy : MonoBehaviour
     }
 
     // Platformdan düştükten donra düşmanı yok etmeye yarayan fonksiyon
-    public void FallDamage()
+    private void FallDamage()
     {
         WaveManager.instance.aliveEnemyCount--;
         Destroy(gameObject, 2.0f);
     }
 
     // Düşman oyuncu tarafından öldürülürse animasyonun sonunda yok olmasını sağlıyor
-    public void Death()
+    private void Death()
     {
         WaveManager.instance.aliveEnemyCount--;
         Destroy(gameObject, 0.1f);
     }
 
     // Hasar alındığındaki geri tepmeyi durduyor
-    public void HurtEnd()
+    private void HurtEnd()
     {
         rgb.velocity = Vector2.zero;
     }

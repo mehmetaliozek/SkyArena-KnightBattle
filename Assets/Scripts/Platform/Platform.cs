@@ -10,7 +10,7 @@ public class Platform : MonoBehaviour
         {
             other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
             other.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
-            
+
             switch (other.tag)
             {
                 case Tags.player:
@@ -18,7 +18,8 @@ public class Platform : MonoBehaviour
                     break;
 
                 case Tags.enemy:
-                    other.GetComponent<Enemy>().FallDamage();
+                    // Enemyden miras almış class FallDamage fonksiyonunu çalıştırması için mesaj atıyoz
+                    other.SendMessage(EnemyFunctions.fallDamage);
                     break;
             }
         }
