@@ -61,6 +61,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void AttackStart()
     {
         canMove = false;
+        canRoll = false;
         canAttack = false;
     }
 
@@ -68,6 +69,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void AttackEnd()
     {
         canMove = true;
+        canRoll = true;
         canAttack = true;
     }
 

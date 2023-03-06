@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 373
+  controlID: 6285
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 374
+  controlID: 6286
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,8 +163,8 @@ MonoBehaviour:
     y: 0
     width: 725.6
     height: 374.4
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -451,9 +451,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.3423904, y: 1.3755755, z: -0.03943066}
+    m_Target: {x: -0.3847094, y: 0.11091092, z: -0.11969008}
     speed: 2
-    m_Value: {x: -1.3423904, y: 1.3755755, z: -0.03943066}
+    m_Value: {x: -0.3847094, y: 0.11091092, z: -0.11969008}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -504,9 +504,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 5.0016327
+    m_Target: 5.458749
     speed: 2
-    m_Value: 5.0016327
+    m_Value: 5.458749
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -564,6 +564,7 @@ MonoBehaviour:
     - {fileID: 1880847956870596547, guid: 6a9a8be8ea87b294d80ce66a853161a5, type: 2}
     - {fileID: -2627617575155709528, guid: f5a661c824a38fb41958bcb61862e7e4, type: 2}
     - {fileID: -1934532000273079774, guid: 59acc19d56572644c9b4a56c9c9ac559, type: 2}
+    - {fileID: -4488782155971244794, guid: 614f77133e6ae7d43a662111a7a5c22d, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.41360822
       e01: 0
@@ -613,16 +614,32 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
+    - e00: 0.58640534
+      e01: 0
+      e02: 0
+      e03: -65.86972
+      e10: 0
+      e11: 0.58640534
+      e12: 0
+      e13: 81.28674
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 59acc19d56572644c9b4a56c9c9ac559, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 614f77133e6ae7d43a662111a7a5c22d, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -1934532000273079774, guid: 59acc19d56572644c9b4a56c9c9ac559, type: 2}
+  - m_Target: {fileID: -4488782155971244794, guid: 614f77133e6ae7d43a662111a7a5c22d, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
   blendTreeGraph: {fileID: 0}
   blendTreeGraphGUI: {fileID: 0}
-  m_AutoLiveLink: 1
+  m_AutoLiveLink: 0
   m_MiniTool: 0
   m_LockTracker:
     m_IsLocked: 0
@@ -648,8 +665,8 @@ MonoBehaviour:
     y: 374.4
     width: 725.6
     height: 356.4
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -686,7 +703,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -2982
+  m_LastSelectedObjectID: 23912
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -706,8 +723,8 @@ MonoBehaviour:
     y: 0
     width: 246.40002
     height: 730.8
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
@@ -746,7 +763,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 9af4ffff70f5ffffbcf5ffff38f6ffff88f6fffff4f6ffff4af9ffff28fbffff92780000
+      m_ExpandedIDs: 28fbffff385d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -837,22 +854,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Prefabs/Enemis
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 57
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Prefabs/Enemis
   m_LastFoldersGridSize: 57
   m_LastProjectPath: C:\Users\MehmetAli\Desktop\Unity Projects\ProjectX
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a45f0000
-    m_LastClickedID: 24484
-    m_ExpandedIDs: 000000008c5f00008e5f0000905f0000925f0000945f0000965f0000985f0000a45f000000ca9a3b
+    m_SelectedIDs: ca5f0000
+    m_LastClickedID: 24522
+    m_ExpandedIDs: 000000006c5f00006e5f0000705f0000725f0000745f0000765f00009a5f0000a45f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -880,7 +897,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c5f00008e5f0000905f0000925f0000945f0000965f0000985f000000ca9a3b
+    m_ExpandedIDs: 000000006c5f00006e5f0000705f0000725f0000745f0000765f00009a5f0000a45f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
