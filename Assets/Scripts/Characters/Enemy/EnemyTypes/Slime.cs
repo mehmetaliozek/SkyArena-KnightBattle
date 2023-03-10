@@ -59,19 +59,6 @@ public class Slime : Enemy
         }
     }
 
-    protected override void LookAtPlayer()
-    {
-        // Oyuncu düşmanın sağında mı solunda mı diye kontrol edip düşmanın yüzünü oyuncuya çeviriyor
-        if (transform.position.x - target.position.x > 0)
-        {
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-    }
-
     protected override void Attack()
     {
         currentAttackRate -= Time.deltaTime;
