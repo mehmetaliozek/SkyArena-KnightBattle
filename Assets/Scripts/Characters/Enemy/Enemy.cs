@@ -38,9 +38,6 @@ public abstract class Enemy : MonoBehaviour
     // Düşmanın hasar alabilrliğini kontrol eden değişken
     protected bool canTakeDamage = true;
 
-    // Düşmanın anlık canı
-    protected float currentHealth;
-
     // Düşmanın anlık saldırı hızı
     protected float currentAttackRate;
 
@@ -52,7 +49,7 @@ public abstract class Enemy : MonoBehaviour
         moveSpot = EnemySpawner.instance.RandomPosition();
         target = Player.instance.GetComponent<Transform>();
         stats = GetComponent<Stats>();
-        currentHealth = stats.maxHealth;
+        stats.currentHealth = stats.maxHealth;
         currentAttackRate = stats.attackRate;
     }
 
@@ -70,8 +67,8 @@ public abstract class Enemy : MonoBehaviour
     {
         if (canTakeDamage)
         {
-            currentHealth -= damage;
-            if (currentHealth <= 0)
+            stats.currentHealth -= damage;
+            if (stats.currentHealth <= 0)
             {
                 // Düşmanın canı sıfırın altına inince hasar yemesini ve animasyonunun tekrar tekrar tetiklenmesini önlemek için hasar alabilirliğini konrol ediyoz
                 canTakeDamage = !canTakeDamage;

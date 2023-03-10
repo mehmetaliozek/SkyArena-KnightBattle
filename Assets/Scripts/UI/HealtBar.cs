@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealtBar : MonoBehaviour
 {
-
     // Can barının azalması ve dolması için gerekli slider
     public Slider slider;
     // Can barının can seviyesine göre rengini ayarlayan özellik

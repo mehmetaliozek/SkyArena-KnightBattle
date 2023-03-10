@@ -20,9 +20,6 @@ public class Player : MonoBehaviour
     // Oyuncu yürüken verilen hız vektöru
     private Vector3 velocity;
 
-    // Oyuncunun anlık canı
-    public float currentHealth;
-
     // Oyuncunun anlık saldırı hızı
     private float nextAttackTime;
 
@@ -38,7 +35,7 @@ public class Player : MonoBehaviour
         }
         rgb = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>();
-        currentHealth = stats.maxHealth;
+        stats.currentHealth = stats.maxHealth;
         healtBar.SetMaxHealth(Player.instance.stats.maxHealth);
     }
 
@@ -114,11 +111,11 @@ public class Player : MonoBehaviour
     public void TakeDamage(float damage)
     {
         // Anlık canımız sıfırın üzerinde olduğu sürece canımız azalıyor ve hasar animasyonu çalışıyor
-        if (currentHealth > 0)
+        if (stats.currentHealth > 0)
         {
-            currentHealth -= damage;
+            stats.currentHealth -= damage;
             PlayerAnimationEvents.instance.isHurt = true;
-            healtBar.SetHealth(Player.instance.currentHealth);
+            healtBar.SetHealth(Player.instance.stats.currentHealth);
         }
         else if (!PlayerAnimationEvents.instance.isDeath)
         {
