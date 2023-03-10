@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BlueSlime : Enemy
+public class Slime : Enemy
 {
     private void Update()
     {

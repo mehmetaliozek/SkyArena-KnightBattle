@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 952466286}
   - component: {fileID: 1248464466230630243}
   - component: {fileID: 7665986230123562469}
-  - component: {fileID: 7665986230123562471}
+  - component: {fileID: 7558451244083893600}
   - component: {fileID: -7637293021630487085}
   m_Layer: 10
   m_Name: Blue Slime
@@ -178,7 +178,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7665986230123562471
+--- !u!114 &7558451244083893600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7665986230123562464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f60347fffcf3f4fa620c1500f554cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e5038c5917b3b9498e45acb9e0721ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 6356565600449872458}
@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  currentHealth: 0
   attack: 1
   attackRange: 0.25
   attackRate: 0.5
