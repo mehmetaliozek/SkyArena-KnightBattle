@@ -59,15 +59,26 @@ public abstract class Enemy : MonoBehaviour
 
     protected abstract void FollowPlayer(float distance);
 
-    protected abstract void LookAtPlayer();
-
     protected abstract void Attack();
+
+    protected void LookAtPlayer()
+    {
+        // Oyuncu düşmanın sağında mı solunda mı diye kontrol edip düşmanın yüzünü oyuncuya çeviriyor
+        if (transform.position.x - target.position.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+    }
 
     private void TakeDamage(float damage)
     {
         if (canTakeDamage)
         {
-            stats.currentHealth -= damage;
+            stats.currentHealth -= (damage - (damage * stats.defense));
             if (stats.currentHealth <= 0)
             {
                 // Düşmanın canı sıfırın altına inince hasar yemesini ve animasyonunun tekrar tekrar tetiklenmesini önlemek için hasar alabilirliğini konrol ediyoz
@@ -96,7 +107,7 @@ public abstract class Enemy : MonoBehaviour
     // Düşman oyuncu tarafından öldürülürse animasyonun sonunda yok olmasını sağlıyor
     private void Death()
     {
-        WaveManager.instance.aliveEnemyCount--;
+        // WaveManager.instance.aliveEnemyCount--;
         Destroy(gameObject, 0.1f);
     }
 

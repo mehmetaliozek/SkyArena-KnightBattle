@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
         // Anlık canımız sıfırın üzerinde olduğu sürece canımız azalıyor ve hasar animasyonu çalışıyor
         if (stats.currentHealth > 0)
         {
-            stats.currentHealth -= damage;
+            stats.currentHealth -= (damage - (damage * stats.defense));
             PlayerAnimationEvents.instance.isHurt = true;
             healtBar.SetHealth(Player.instance.stats.currentHealth);
         }
