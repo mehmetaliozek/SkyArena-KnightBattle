@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Skeleton : Enemy
 {
-    private bool canAttack = true;
-
     private void Update()
     {
         // Düşman hasar alabilirliği varsa AI çalışcak
@@ -11,8 +9,6 @@ public class Skeleton : Enemy
         {
             AI();
         }
-        // Oyuncuya dönme
-        LookAtPlayer();
     }
 
     protected override void AI()
@@ -23,10 +19,12 @@ public class Skeleton : Enemy
         if (distance < followingDistance)
         {
             FollowPlayer(distance);
+            LookAtPlayer(target.position.x);
         }
         else
         {
             Patrol();
+            LookAtPlayer(moveSpot.x);
         }
     }
 
@@ -87,5 +85,11 @@ public class Skeleton : Enemy
     {
         currentAttackRate = stats.attackRate;
         canAttack = true;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, 0.5f);
     }
 }
