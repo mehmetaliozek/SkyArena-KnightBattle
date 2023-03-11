@@ -66,6 +66,7 @@ public class Skeleton : Enemy
         if (currentAttackRate <= 0 && canAttack)
         {
             animator.SetTrigger(EnemyAnimationParametres.attack);
+            animator.SetInteger(EnemyAnimationParametres.attackIndex, Random.Range(0, 2));
             canAttack = false;
         }
     }
