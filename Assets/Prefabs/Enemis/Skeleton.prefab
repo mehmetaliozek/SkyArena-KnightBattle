@@ -194,7 +194,7 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 2048
-  followingDistance: 4
+  followingDistance: 3
   stoppingDistance: 1
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
@@ -208,10 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9621327a0861d3e4497f03f20430f832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 35
   currentHealth: 0
-  attack: 0
-  attackRange: 0
-  attackRate: 0
-  defense: 0
+  attack: 10
+  attackRange: 0.5
+  attackRate: 0.7
+  defense: 0.2
   speed: 1

@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
             PlayerAnimationEvents.instance.isHurt = true;
             healtBar.SetHealth(Player.instance.stats.currentHealth);
         }
-        else if (!PlayerAnimationEvents.instance.isDeath)
+        if (stats.currentHealth <= 0 && !PlayerAnimationEvents.instance.isDeath)
         {
             Death();
         }

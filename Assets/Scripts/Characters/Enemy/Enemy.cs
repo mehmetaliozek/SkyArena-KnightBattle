@@ -41,6 +41,10 @@ public abstract class Enemy : MonoBehaviour
     // Düşmanın anlık saldırı hızı
     protected float currentAttackRate;
 
+    protected bool canAttack = true;
+
+    protected bool isPatrol = true;
+
     // İlk değer atamaları
     private void Start()
     {
@@ -61,10 +65,10 @@ public abstract class Enemy : MonoBehaviour
 
     protected abstract void Attack();
 
-    protected void LookAtPlayer()
+    protected void LookAtPlayer(float x)
     {
         // Oyuncu düşmanın sağında mı solunda mı diye kontrol edip düşmanın yüzünü oyuncuya çeviriyor
-        if (transform.position.x - target.position.x > 0)
+        if (transform.position.x - x > 0)
         {
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
@@ -107,7 +111,7 @@ public abstract class Enemy : MonoBehaviour
     // Düşman oyuncu tarafından öldürülürse animasyonun sonunda yok olmasını sağlıyor
     private void Death()
     {
-        // WaveManager.instance.aliveEnemyCount--;
+        WaveManager.instance.aliveEnemyCount--;
         Destroy(gameObject, 0.1f);
     }
 

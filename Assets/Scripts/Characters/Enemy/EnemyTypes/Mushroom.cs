@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Slime : Enemy
+public class Mushroom : Enemy
 {
     private void Update()
     {
@@ -13,8 +13,8 @@ public class Slime : Enemy
 
     protected override void AI()
     {
-        // Hedef birimle aralarında olan mesafe
         float distance = Vector2.Distance(transform.position, target.position);
+        animator.SetFloat(EnemyAnimationParametres.velocity, 1);
         // Mesafe takip mesafesinden küçükse oyuncu takip edilcek değilse rastgele yürüycek
         if (distance < followingDistance)
         {
@@ -30,12 +30,13 @@ public class Slime : Enemy
 
     protected override void Patrol()
     {
-        // Rastgele noktaya doğru hareket etme
+        isPatrol = true;
         transform.position = Vector2.MoveTowards(transform.position, moveSpot, stats.speed * Time.deltaTime);
 
         // Rastgele noktaya yakın bir konuma varınca bir süre bekleme
         if (Vector2.Distance(transform.position, moveSpot) < 0.2f)
         {
+            animator.SetFloat(EnemyAnimationParametres.velocity, 0);
             currentWaitTime -= Time.deltaTime;
             if (currentWaitTime <= 0)
             {
@@ -48,7 +49,7 @@ public class Slime : Enemy
 
     protected override void FollowPlayer(float distance)
     {
-        // Aşağıdaysa bu uzaklık belirttiğimiz durma uzaklığında büyükse oyuncuya yaklaşıyor değilse saldırıyor
+        isPatrol = false;
         if (distance > stoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, stats.speed * Time.deltaTime);
@@ -61,16 +62,36 @@ public class Slime : Enemy
 
     protected override void Attack()
     {
+        animator.SetFloat(EnemyAnimationParametres.velocity, 0);
         currentAttackRate -= Time.deltaTime;
 
-        if (currentAttackRate <= 0)
+        if (currentAttackRate <= 0 && canAttack)
         {
-            // Belirli bir yarıçapta saldırı yapacğı birim sayısı 0 değilse Oyuncuya hasar veriyor
-            if (Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers).Length != 0)
-            {
-                Player.instance.TakeDamage(stats.attack);
-            }
-            currentAttackRate = stats.attackRate;
+            animator.SetTrigger(EnemyAnimationParametres.attack);
+            canAttack = false;
         }
+    }
+
+    private void DealDamage()
+    {
+        // Belirli bir yarıçapta saldırı yapacğı birim sayısı 0 değilse Oyuncuya hasar veriyor
+        if (Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers).Length != 0)
+        {
+            Player.instance.TakeDamage(stats.attack);
+        }
+        currentAttackRate = stats.attackRate;
+        canAttack = true;
+    }
+
+    private void FixAttack()
+    {
+        currentAttackRate = stats.attackRate;
+        canAttack = true;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, 0.25f);
     }
 }
