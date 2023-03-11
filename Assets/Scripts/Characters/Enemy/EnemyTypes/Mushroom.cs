@@ -68,6 +68,7 @@ public class Mushroom : Enemy
         if (currentAttackRate <= 0 && canAttack)
         {
             animator.SetTrigger(EnemyAnimationParametres.attack);
+            animator.SetInteger(EnemyAnimationParametres.attackIndex, Random.Range(0, 2));
             canAttack = false;
         }
     }
@@ -92,6 +93,6 @@ public class Mushroom : Enemy
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(attackPoint.position, 0.25f);
+        Gizmos.DrawWireSphere(attackPoint.position, 0.3f);
     }
 }
