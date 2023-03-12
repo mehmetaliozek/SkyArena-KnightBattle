@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bomb_sprite_0
+      name: Bomb_sprite_39
       rect:
         serializedVersion: 2
         x: 1332
@@ -125,7 +125,7 @@ TextureImporter:
         width: 37
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,7 +138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_sprite_2
+      name: Bomb_sprite_42
       rect:
         serializedVersion: 2
         x: 1626
@@ -146,7 +146,7 @@ TextureImporter:
         width: 54
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_sprite_6
+      name: Bomb_sprite_44
       rect:
         serializedVersion: 2
         x: 1824
@@ -167,7 +167,7 @@ TextureImporter:
         width: 59
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,7 +180,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_sprite_8
+      name: Bomb_sprite_38
       rect:
         serializedVersion: 2
         x: 1236
@@ -188,7 +188,7 @@ TextureImporter:
         width: 33
         height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -209,7 +209,7 @@ TextureImporter:
         width: 9
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,7 +230,7 @@ TextureImporter:
         width: 9
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -251,7 +251,7 @@ TextureImporter:
         width: 9
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -264,15 +264,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_sprite_18
+      name: Bomb_sprite_36
       rect:
         serializedVersion: 2
-        x: 1045
-        y: 41
+        x: 1046
+        y: 42
         width: 14
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -285,15 +285,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_sprite_19
+      name: Bomb_sprite_37
       rect:
         serializedVersion: 2
         x: 1145
-        y: 41
+        y: 42
         width: 14
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -306,7 +306,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_sprite_20
+      name: Bomb_sprite_40
       rect:
         serializedVersion: 2
         x: 1435
@@ -314,7 +314,7 @@ TextureImporter:
         width: 34
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -335,7 +335,7 @@ TextureImporter:
         width: 9
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -356,7 +356,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -373,11 +373,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 548
-        y: 43
+        y: 44
         width: 9
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -394,11 +394,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 648
-        y: 43
+        y: 44
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -419,7 +419,7 @@ TextureImporter:
         width: 9
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -440,7 +440,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -457,11 +457,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 947
-        y: 43
+        y: 44
         width: 11
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -474,7 +474,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_sprite_36
+      name: Bomb_sprite_41
       rect:
         serializedVersion: 2
         x: 1529
@@ -482,7 +482,7 @@ TextureImporter:
         width: 49
         height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -495,7 +495,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_sprite_1
+      name: Bomb_sprite_43
       rect:
         serializedVersion: 2
         x: 1725
@@ -503,7 +503,7 @@ TextureImporter:
         width: 55
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -532,52 +532,42 @@ TextureImporter:
       Bomb_sprite_48: -1291044055
       Bomb_sprite_13: -1579753426
       Bomb_sprite_23: -313461312
-      Bomb_sprite_41: -532636107
-      Bomb_sprite_36: 1757106517
+      Bomb_sprite_41: 1757106517
+      Bomb_sprite_26: 1041529251
+      Bomb_sprite_31: 1004893550
+      Bomb_sprite_36: -1631806841
+      Bomb_sprite_35: 2019909649
       Bomb_sprite_11: 541874313
       Bomb_sprite_27: -1006579743
       Bomb_sprite_28: 1206608196
       Bomb_sprite_50: -375331247
-      Bomb_sprite_6: 1376416716
-      Bomb_sprite_4: -1534850481
-      Bomb_sprite_0: 1894423060
-      Bomb_sprite_8: -1640831094
+      Bomb_sprite_5: -841404035
+      Bomb_sprite_17: 1338106367
+      Bomb_sprite_40: 1888982197
       Bomb_sprite_16: -444568678
-      Bomb_sprite_43: -155492827
+      Bomb_sprite_32: 1914897567
+      Bomb_sprite_49: -61274731
+      Bomb_sprite_43: -2082740483
+      Bomb_sprite_39: 1894423060
+      Bomb_sprite_7: -883072004
+      Bomb_sprite_25: -1033077793
+      Bomb_sprite_34: 1702179434
       Bomb_sprite_9: 1319858220
-      Bomb_sprite_38: -624579781
+      Bomb_sprite_38: -1640831094
       Bomb_sprite_21: 546003552
-      Bomb_sprite_19: 1205478272
+      Bomb_sprite_44: 1376416716
+      Bomb_sprite_45: 269311412
+      Bomb_sprite_22: 232146710
+      Bomb_sprite_51: 539604673
       Bomb_sprite_46: 1025834208
       Bomb_sprite_47: 401973371
       Bomb_sprite_14: -257024260
       Bomb_sprite_33: 1313473237
-      Bomb_sprite_37: -1463981095
+      Bomb_sprite_37: 1205478272
       Bomb_sprite_15: -353611381
-      Bomb_sprite_3: 1415136168
-      Bomb_sprite_42: -390931003
-      Bomb_sprite_20: 1888982197
-      Bomb_sprite_35: 2019909649
-      Bomb_sprite_31: 1004893550
-      Bomb_sprite_26: 1041529251
-      Bomb_sprite_5: -841404035
-      Bomb_sprite_17: 1338106367
-      Bomb_sprite_18: -1631806841
-      Bomb_sprite_2: -1194238525
-      Bomb_sprite_40: 1314958466
-      Bomb_sprite_32: 1914897567
-      Bomb_sprite_49: -61274731
-      Bomb_sprite_39: 131894953
-      Bomb_sprite_7: -883072004
-      Bomb_sprite_25: -1033077793
-      Bomb_sprite_34: 1702179434
-      Bomb_sprite_45: 269311412
-      Bomb_sprite_44: -707262304
-      Bomb_sprite_22: 232146710
-      Bomb_sprite_51: 539604673
       Bomb_sprite_24: -459045060
+      Bomb_sprite_42: -1194238525
       Bomb_sprite_12: -1438674696
-      Bomb_sprite_1: -2082740483
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
