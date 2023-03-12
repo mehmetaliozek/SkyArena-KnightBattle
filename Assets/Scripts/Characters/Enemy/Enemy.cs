@@ -93,6 +93,8 @@ public abstract class Enemy : MonoBehaviour
             else
             {
                 Vector3 direction = transform.position - target.position;
+                // Düşman birimi dinamik yani kuvvetlerden etkilenebilir bi hale getiriyoz
+                rgb.isKinematic = false;
                 // Açısal olarak kuvvet uygulamamıza sağlıyor
                 rgb.AddForceAtPosition(direction.normalized * 100, target.position);
                 // Hasar animasyonunu tetikliyor
@@ -119,5 +121,6 @@ public abstract class Enemy : MonoBehaviour
     private void HurtEnd()
     {
         rgb.velocity = Vector2.zero;
+        rgb.isKinematic = true;
     }
 }

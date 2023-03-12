@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    // Oyuncu yada düşmanlar platformdan çıkarsa yer çekii ekliyip düşmeleri sağlanıyor
+    // Oyuncu yada düşmanlar platformdan çıkarsa yer çekimi ekliyip düşmeleri sağlanıyor
     private void OnTriggerExit2D(Collider2D other)
     {
         // Nesnenin tagı Player yada Enemy ise çalışıcak
@@ -20,6 +20,7 @@ public class Platform : MonoBehaviour
                 case Tags.enemy:
                     // Enemyden miras almış class FallDamage fonksiyonunu çalıştırması için mesaj atıyoz
                     other.SendMessage(EnemyFunctions.fallDamage);
+                    other.GetComponent<Collider2D>().enabled = false;
                     break;
             }
         }
