@@ -29,6 +29,9 @@ public abstract class Enemy : MonoBehaviour
     // Düşmanın takip edeceği birim
     protected Transform target;
 
+    // Düşman oyuncunun yanındaysa ama oyuncu saldırı benzilinde değilse oyuncunun sağına veya soluna geçeceği 
+    protected Transform newTarget;
+
     // Rastgele bi noktaya gittikten sonra bekliyceği süre
     protected float waitTime = 1.5f;
 
@@ -41,9 +44,8 @@ public abstract class Enemy : MonoBehaviour
     // Düşmanın anlık saldırı hızı
     protected float currentAttackRate;
 
+    // Düşmanın saldırı yapailirliği
     protected bool canAttack = true;
-
-    protected bool isPatrol = true;
 
     // İlk değer atamaları
     private void Start()
@@ -52,6 +54,7 @@ public abstract class Enemy : MonoBehaviour
         rgb = GetComponent<Rigidbody2D>();
         moveSpot = EnemySpawner.instance.RandomPosition();
         target = Player.instance.GetComponent<Transform>();
+        newTarget = Player.instance.GetComponentsInChildren<Transform>()[1];
         stats = GetComponent<Stats>();
         stats.currentHealth = stats.maxHealth;
         currentAttackRate = stats.attackRate;
