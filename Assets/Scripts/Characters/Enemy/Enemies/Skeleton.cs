@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Mushroom : Enemy
+public class Skeleton : Enemy
 {
     private void Update()
     {
@@ -19,18 +19,16 @@ public class Mushroom : Enemy
         if (distance < followingDistance)
         {
             FollowPlayer(distance);
-            LookAtPlayer(target.position.x);
         }
         else
         {
             Patrol();
-            LookAtPlayer(moveSpot.x);
         }
     }
 
     protected override void Patrol()
     {
-        isPatrol = true;
+        LookAtPlayer(moveSpot.x);
         transform.position = Vector2.MoveTowards(transform.position, moveSpot, stats.speed * Time.deltaTime);
 
         // Rastgele noktaya yakın bir konuma varınca bir süre bekleme
@@ -49,10 +47,14 @@ public class Mushroom : Enemy
 
     protected override void FollowPlayer(float distance)
     {
-        isPatrol = false;
-        if (distance > stoppingDistance)
+        LookAtPlayer(target.position.x);
+        if (distance > stoppingDistance && canAttack)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, stats.speed * Time.deltaTime);
+        }
+        else if (Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers).Length == 0 && transform.position != newTarget.position)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, newTarget.position, stats.speed * Time.deltaTime);
         }
         else
         {
@@ -90,9 +92,8 @@ public class Mushroom : Enemy
         canAttack = true;
     }
 
-
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(attackPoint.position, 0.3f);
+        Gizmos.DrawWireSphere(attackPoint.position, 0.5f);
     }
 }
