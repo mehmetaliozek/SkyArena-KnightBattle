@@ -109,6 +109,10 @@ public abstract class Enemy : MonoBehaviour
     // Platformdan düştükten donra düşmanı yok etmeye yarayan fonksiyon
     private void FallDamage()
     {
+        GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+        GetComponent<Collider2D>().enabled = false;
+        rgb.gravityScale = 1.0f;
+        rgb.isKinematic = false;
         WaveManager.instance.aliveEnemyCount--;
         Destroy(gameObject, 2.0f);
     }
