@@ -132,6 +132,8 @@ public class Player : MonoBehaviour
     // Düşüş animasyonunu çalıştırıyor
     public void FallDamage()
     {
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+        gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
         PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.fall);
     }
 }

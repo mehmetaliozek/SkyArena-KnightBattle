@@ -8,9 +8,6 @@ public class Platform : MonoBehaviour
         // Nesnenin tagı Player yada Enemy ise çalışıcak
         if (other.tag != Tags.cloud)
         {
-            other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
-            other.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
-
             switch (other.tag)
             {
                 case Tags.player:
@@ -20,7 +17,6 @@ public class Platform : MonoBehaviour
                 case Tags.enemy:
                     // Enemyden miras almış class FallDamage fonksiyonunu çalıştırması için mesaj atıyoz
                     other.SendMessage(EnemyFunctions.fallDamage);
-                    other.GetComponent<Collider2D>().enabled = false;
                     break;
             }
         }
