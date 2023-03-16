@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 952466286}
   - component: {fileID: 1446178354627286667}
   - component: {fileID: 7665986230123562469}
-  - component: {fileID: -7637293021630487085}
+  - component: {fileID: 7168389073673036956}
   m_Layer: 10
   m_Name: Fire Ball
   m_TagString: Enemy
@@ -118,7 +118,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -145,7 +145,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-7637293021630487085
+--- !u!114 &7168389073673036956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,13 +154,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7665986230123562464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9621327a0861d3e4497f03f20430f832, type: 3}
+  m_Script: {fileID: 11500000, guid: d730e775b489bac4cb52ee2656323298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  attack: 0
-  attackRange: 0
-  attackRate: 0
-  defense: 0
-  speed: 1
+  animator: {fileID: 952466286}
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  attack: 10
