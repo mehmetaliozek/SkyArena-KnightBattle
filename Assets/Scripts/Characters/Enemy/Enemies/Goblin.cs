@@ -70,7 +70,6 @@ public class Goblin : Enemy
         if (currentAttackRate <= 0 && canAttack)
         {
             animator.SetTrigger(EnemyAnimationParametres.attack);
-            animator.SetFloat(EnemyAnimationParametres.attackIndex, Random.Range(0, 2));
             canAttack = false;
         }
     }

@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414f2a18fc5d88148b48f3f009d96e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7665986230123562464, guid: be8c096c014094c4c851117633ee55fc, type: 3}
+  enemy: {fileID: 7665986230123562464, guid: c1c6b3df796990c4096bc34a2f4b0576, type: 3}
   spawnArea: {fileID: 251074434}
   createdEnemyCount: 0
 --- !u!1 &480150522
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326419327}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05c1dd243e2d755468c6df2b6f60a4e3, type: 3}
   m_Name: 

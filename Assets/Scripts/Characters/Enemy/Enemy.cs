@@ -53,7 +53,7 @@ public abstract class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         rgb = GetComponent<Rigidbody2D>();
         moveSpot = EnemySpawner.instance.RandomPosition();
-        target = Player.instance.GetComponent<Transform>();
+        target = Player.instance.transform;
         newTarget = Player.instance.GetComponentsInChildren<Transform>()[1];
         stats = GetComponent<Stats>();
         stats.currentHealth = stats.maxHealth;
