@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 952466286}
   - component: {fileID: 1446178354627286667}
   - component: {fileID: 7665986230123562469}
-  - component: {fileID: 7168389073673036956}
+  - component: {fileID: -4780931634857126717}
   m_Layer: 0
-  m_Name: Fire Ball
+  m_Name: Bomb
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -597246223
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -60915663, guid: 63bfd8de41133084d890d187fbcdc8d7, type: 3}
+  m_Sprite: {fileID: -353611381, guid: c0c9c0eeffabbeb4aa12b9b09cb21642, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 7665986230123562464}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a384da3c8ff415548a958c91c89d5794, type: 2}
+  m_Controller: {fileID: 9100000, guid: 51ec7bedf1824f14abf08196f7c168ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -145,7 +145,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7168389073673036956
+--- !u!114 &-4780931634857126717
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,11 +154,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7665986230123562464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d730e775b489bac4cb52ee2656323298, type: 3}
+  m_Script: {fileID: 11500000, guid: 7da6bcc4ea7034b4297075e4ab63ade0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 952466286}
   playerLayers:
     serializedVersion: 2
     m_Bits: 2048
-  attack: 10
+  attack: 5

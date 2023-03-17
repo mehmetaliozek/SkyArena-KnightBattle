@@ -69,7 +69,7 @@ public class HellBeast : Enemy
         Instantiate(fireBall, attackPoint.position, Quaternion.identity);
     }
 
-    private void EnableCollider()
+    private void EnableBoxCollider2D()
     {
         GetComponent<BoxCollider2D>().enabled = true;
     }
