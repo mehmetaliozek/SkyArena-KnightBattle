@@ -4,26 +4,28 @@ public class FireBall : MonoBehaviour
 {
     // Fire Ball animator
     [SerializeField] private Animator animator;
-    // Fire Ball un hasar verceği layer
+    // Fire Ballun hasar verceği layer
     [HideInInspector] public LayerMask playerLayers;
-    // Fire Ball un hasar gücü
+    // Fire Ballun hasar gücü
     [HideInInspector] public float attack;
-    // Fire Ball un gideceği konum
+    // Fire Ballun gideceği konum
     private Vector3 target;
-    // Fire Ball un o konuma gidiş hızı
+    // Fire Ballun o konuma gidiş hızı
     private float speed = 5f;
-    // Fire Ball un bakacağı konum
+    // Fire Ballun bakacağı konum
     private Vector3 lookDir;
-    // Fire Ball un o konuma gidiş açısı
+    // Fire Ballun o konuma gidiş açısı
     private float angle;
-    // Fire Ball un patlama durumu
+    // Fire Ballun patlama hasarının hissedildiği yarıçap
+    private float radius = 0.3f;
+    // Fire Ballun patlama durumu
     private bool isExplosion = false;
-
+    // Fire Ballun oyuncuya erken çarpışma durumunu kontrol ediyor
     private bool isCollision = false;
 
     private void Start()
     {
-        // Fire Ball un gideceği konum ayarlanıyor
+        // Fire Ballun gideceği konum ayarlanıyor
         target = new Vector3(Player.instance.transform.position.x, Player.instance.transform.position.y);
         lookDir = target - transform.position;
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
@@ -56,7 +58,7 @@ public class FireBall : MonoBehaviour
     // Patlama esnasında menzilde Oyuncu varsa oyuncuya hasar veriyor
     private void Explosion()
     {
-        if (Physics2D.OverlapCircleAll(transform.position, 0.3f, playerLayers).Length != 0)
+        if (Physics2D.OverlapCircleAll(transform.position, radius, playerLayers).Length != 0)
         {
             Player.instance.TakeDamage(attack);
         }
@@ -70,6 +72,6 @@ public class FireBall : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, 0.3f);
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Goblin : Enemy
 {
+    [SerializeField] private GameObject bomb;
+
     private void Update()
     {
         // Düşman hasar alabilirliği varsa AI çalışcak
@@ -89,6 +91,13 @@ public class Goblin : Enemy
     {
         currentAttackRate = stats.attackRate;
         canAttack = true;
+    }
+
+    private void SpawnBomb()
+    {
+        bomb.GetComponent<Bomb>().attack = stats.attack;
+        bomb.GetComponent<Bomb>().playerLayers = playerLayers;
+        Instantiate(bomb, transform.position, Quaternion.identity);
     }
 
     private void OnDrawGizmos()
