@@ -31,7 +31,7 @@ public class Slime : Enemy
     protected override void Patrol()
     {
         // Rastgele noktaya doğru hareket etme
-        transform.position = Vector2.MoveTowards(transform.position, moveSpot, stats.speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, moveSpot, stats.moveSpeed * Time.deltaTime);
 
         // Rastgele noktaya yakın bir konuma varınca bir süre bekleme
         if (Vector2.Distance(transform.position, moveSpot) < 0.2f)
@@ -51,7 +51,7 @@ public class Slime : Enemy
         // Aşağıdaysa bu uzaklık belirttiğimiz durma uzaklığında büyükse oyuncuya yaklaşıyor değilse saldırıyor
         if (distance > stoppingDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, stats.speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, stats.moveSpeed * Time.deltaTime);
         }
         else
         {

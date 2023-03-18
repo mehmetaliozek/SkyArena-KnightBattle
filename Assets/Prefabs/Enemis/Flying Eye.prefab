@@ -183,7 +183,7 @@ MonoBehaviour:
   attackRange: 0.2
   attackRate: 1
   defense: 0
-  speed: 3
+  moveSpeed: 1
 --- !u!1 &8525813524475766997
 GameObject:
   m_ObjectHideFlags: 0

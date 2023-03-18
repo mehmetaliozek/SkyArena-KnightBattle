@@ -214,4 +214,4 @@ MonoBehaviour:
   attackRange: 0.3
   attackRate: 0.7
   defense: 0.3
-  speed: 0.5
+  moveSpeed: 1

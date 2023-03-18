@@ -29,7 +29,7 @@ public class Mushroom : Enemy
     protected override void Patrol()
     {
         LookAtPlayer(moveSpot.x);
-        transform.position = Vector2.MoveTowards(transform.position, moveSpot, stats.speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, moveSpot, stats.moveSpeed * Time.deltaTime);
 
         // Rastgele noktaya yakın bir konuma varınca bir süre bekleme
         if (Vector2.Distance(transform.position, moveSpot) < 0.2f)
@@ -50,11 +50,11 @@ public class Mushroom : Enemy
         LookAtPlayer(target.position.x);
         if (distance > stoppingDistance && canAttack)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, stats.speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, stats.moveSpeed * Time.deltaTime);
         }
         else if (Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers).Length == 0 && transform.position != newTarget.position)
         {
-            transform.position = Vector2.MoveTowards(transform.position, newTarget.position, stats.speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, newTarget.position, stats.moveSpeed * Time.deltaTime);
         }
         else
         {
