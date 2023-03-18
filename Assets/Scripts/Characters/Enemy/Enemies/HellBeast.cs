@@ -58,7 +58,7 @@ public class HellBeast : Enemy
         {
             moveSpot = EnemySpawner.instance.RandomPosition();
             transform.position = moveSpot;
-            teleportationTime = stats.speed;
+            teleportationTime = stats.moveSpeed;
         }
     }
 

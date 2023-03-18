@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         if (PlayerAnimationEvents.instance.canMove)
         {
             velocity = new Vector3(x, y, 0f);
-            transform.position += velocity * stats.speed * Time.deltaTime;
+            transform.position += velocity * stats.moveSpeed * Time.deltaTime;
         }
 
         //Animasyon kontrolu
