@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3735646394568993995
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6023472536405254737}
-  m_Layer: 0
-  m_Name: Attack Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6023472536405254737
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3735646394568993995}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7665986230123562466}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7665986230123562464
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,10 +13,9 @@ GameObject:
   - component: {fileID: 952466286}
   - component: {fileID: 1446178354627286667}
   - component: {fileID: 7665986230123562469}
-  - component: {fileID: 8716740224004171972}
   - component: {fileID: -7637293021630487085}
   m_Layer: 10
-  m_Name: Goblin
+  m_Name: Fire Worm
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,8 +32,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6023472536405254737}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -109,13 +76,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -597246223
   m_SortingLayer: 3
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 619667981, guid: 830ba2d65460b0243b565a8ac6436ee9, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -126286938, guid: 7c0d41e23e8cbf94abf3a0bedf073a09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.515625, y: 0.5625}
+  m_Size: {x: 3.1875, y: 2.5625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -131,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 7665986230123562464}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fe6a751d4dd846349bb6fee8a36d4923, type: 2}
+  m_Controller: {fileID: 9100000, guid: 80e693db9e513df41b046568df27284b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -154,8 +121,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.515625, y: 0.5625}
+  m_Offset: {x: 0.8017174, y: -0.71296525}
+  m_Size: {x: 1.5903461, y: 2.0922823}
   m_Direction: 0
 --- !u!50 &7665986230123562469
 Rigidbody2D:
@@ -165,7 +132,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7665986230123562464}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -178,25 +145,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8716740224004171972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7665986230123562464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f464e64acdb6aed49a0b45f0b4ecd5af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 6023472536405254737}
-  playerLayers:
-    serializedVersion: 2
-    m_Bits: 2048
-  followingDistance: 5
-  stoppingDistance: 1
-  bomb: {fileID: 7665986230123562464, guid: bcfb890e960fb7f48820af3099bf16f6, type: 3}
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,10 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9621327a0861d3e4497f03f20430f832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 0
   currentHealth: 0
-  attack: 5
-  attackRange: 0.5
-  attackRate: 0.7
+  attack: 0
+  attackRange: 0
+  attackRate: 0
   defense: 0
-  moveSpeed: 1
+  moveSpeed: 0
