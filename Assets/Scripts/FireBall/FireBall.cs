@@ -48,7 +48,6 @@ public class FireBall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("coll");
         if (other.tag == Tags.player)
         {
             isCollision = true;

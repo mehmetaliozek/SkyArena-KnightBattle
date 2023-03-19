@@ -102,6 +102,6 @@ public class Goblin : Enemy
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(attackPoint.position, 0.5f);
+        Gizmos.DrawWireSphere(attackPoint.position, 0.7f);
     }
 }
