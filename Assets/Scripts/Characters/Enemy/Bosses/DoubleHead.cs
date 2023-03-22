@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class DoubleHead : Enemy
 {
-    [SerializeField] private Transform body;
-    [SerializeField] private float attackTreeDistance;
-
-    private bool isAttackTreeActiveted = false;
+    [SerializeField] private float bodyAttackDistance;
+    [SerializeField] private float bodyAttackCoolDown;
+    [SerializeField] private float bodyAttackMoveSpeed;
+    private float currentBodyAttackCoolDown;
+    private bool isBodyAttackActive = false;
 
     private void Update()
     {
@@ -24,13 +25,21 @@ public class DoubleHead : Enemy
         // Mesafe takip mesafesinden küçükse oyuncu takip edilcek değilse rastgele yürüycek
         if (distance < followingDistance)
         {
-            if (distance < attackTreeDistance && !isAttackTreeActiveted)
+            if (currentBodyAttackCoolDown >= 0)
             {
                 FollowPlayer(distance);
+                if (distance > bodyAttackDistance)
+                {
+                    currentBodyAttackCoolDown -= Time.deltaTime;
+                }
+                else
+                {
+                    currentBodyAttackCoolDown = bodyAttackCoolDown;
+                }
             }
             else
             {
-                AttackTree(distance);
+                BodyAttack(distance);
             }
         }
     }
@@ -69,26 +78,28 @@ public class DoubleHead : Enemy
         }
     }
 
-    private void AttackTree(float distance)
+    private void BodyAttack(float distance)
     {
-        if (!isAttackTreeActiveted)
+        if (!isBodyAttackActive)
         {
             animator.SetTrigger(EnemyAnimationParametres.attack);
             animator.SetFloat(EnemyAnimationParametres.attackIndex, 2);
-            isAttackTreeActiveted = true;
+            isBodyAttackActive = true;
         }
 
         if (distance > stoppingDistance / 2)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, stats.moveSpeed * 5 * Time.deltaTime);
-        }
-        else if (Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers).Length != 0)
-        {
-            Player.instance.TakeDamage(stats.attack);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, stats.moveSpeed * bodyAttackMoveSpeed * Time.deltaTime);
         }
         else
         {
-            isAttackTreeActiveted = false;
+            if (Physics2D.OverlapCircleAll(transform.position, stats.attackRange, playerLayers).Length != 0)
+            {
+                Player.instance.TakeDamage(stats.attack * 2.5f);
+            }
+
+            currentBodyAttackCoolDown = bodyAttackCoolDown;
+            isBodyAttackActive = false;
         }
     }
 
@@ -122,6 +133,6 @@ public class DoubleHead : Enemy
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(attackPoint.position, 0.3f);
-        Gizmos.DrawWireSphere(body.position, 0.7f);
+        Gizmos.DrawWireSphere(transform.position, 0.7f);
     }
 }
