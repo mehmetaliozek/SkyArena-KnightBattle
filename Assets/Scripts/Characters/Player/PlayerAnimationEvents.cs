@@ -12,6 +12,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     [HideInInspector] public bool canMove = true;
     [HideInInspector] public bool canAttack = true;
     [HideInInspector] public bool canRoll = true;
+    [HideInInspector] public bool canTakeDamage = true;
     [HideInInspector] public bool isHurt = false;
     [HideInInspector] public bool isDeath = false;
 
@@ -78,6 +79,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         canAttack = false;
         canRoll = false;
+        canTakeDamage = false;
     }
 
     // Takla atma başlangıcında kapanan özellikler açılıyor
@@ -85,6 +87,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         canAttack = true;
         canRoll = true;
+        canTakeDamage = true;
     }
 
     // Ölüm başlangıcında tüm özellikler kapanıyor

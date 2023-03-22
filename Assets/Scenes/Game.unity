@@ -960,6 +960,30 @@ PrefabInstance:
       propertyPath: attack
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: -7637293021630487085, guid: f059f4b667cea984cabe1e43f227bd9a, type: 3}
+      propertyPath: moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719413106976904846, guid: f059f4b667cea984cabe1e43f227bd9a, type: 3}
+      propertyPath: attackTreeCoolDown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719413106976904846, guid: f059f4b667cea984cabe1e43f227bd9a, type: 3}
+      propertyPath: bodyAttackCoolDown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719413106976904846, guid: f059f4b667cea984cabe1e43f227bd9a, type: 3}
+      propertyPath: bodyAttackDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719413106976904846, guid: f059f4b667cea984cabe1e43f227bd9a, type: 3}
+      propertyPath: attackTreeMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719413106976904846, guid: f059f4b667cea984cabe1e43f227bd9a, type: 3}
+      propertyPath: bodyAttackMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7665986230123562464, guid: f059f4b667cea984cabe1e43f227bd9a, type: 3}
       propertyPath: m_Name
       value: Double Head
@@ -3227,6 +3251,7 @@ MonoBehaviour:
   canMove: 1
   canAttack: 1
   canRoll: 1
+  canTakeDamage: 1
   isHurt: 0
   isDeath: 0
 --- !u!1 &1785259938

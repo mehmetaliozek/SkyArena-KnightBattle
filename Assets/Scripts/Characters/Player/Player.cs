@@ -110,16 +110,19 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        // Anlık canımız sıfırın üzerinde olduğu sürece canımız azalıyor ve hasar animasyonu çalışıyor
-        if (stats.currentHealth > 0)
+        if (PlayerAnimationEvents.instance.canTakeDamage)
         {
-            stats.currentHealth -= (damage - (damage * stats.defense));
-            PlayerAnimationEvents.instance.isHurt = true;
-            healtBar.SetHealth(Player.instance.stats.currentHealth);
-        }
-        if (stats.currentHealth <= 0 && !PlayerAnimationEvents.instance.isDeath)
-        {
-            Death();
+            // Anlık canımız sıfırın üzerinde olduğu sürece canımız azalıyor ve hasar animasyonu çalışıyor
+            if (stats.currentHealth > 0)
+            {
+                stats.currentHealth -= (damage - (damage * stats.defense));
+                PlayerAnimationEvents.instance.isHurt = true;
+                healtBar.SetHealth(Player.instance.stats.currentHealth);
+            }
+            else if (!PlayerAnimationEvents.instance.isDeath)
+            {
+                Death();
+            }
         }
     }
 
@@ -132,8 +135,8 @@ public class Player : MonoBehaviour
     // Düşüş animasyonunu çalıştırıyor
     public void FallDamage()
     {
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.0f; 
-        gameObject.GetComponent<Rigidbody2D>().isKinematic = false; 
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+        gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
         gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
         PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.fall);
     }
