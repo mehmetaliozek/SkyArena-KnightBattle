@@ -24,6 +24,8 @@ public class Skeleton : Enemy
         {
             Patrol();
         }
+
+        Hurt();
     }
 
     protected override void Patrol()

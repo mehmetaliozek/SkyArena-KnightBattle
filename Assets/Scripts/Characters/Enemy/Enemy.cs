@@ -16,6 +16,7 @@ public abstract class Enemy : MonoBehaviour
 
     // Oyuncuya en fazla yaklaşabilceği mesafe
     [SerializeField] protected float stoppingDistance;
+    [SerializeField] protected bool hurtAnimation;
 
     // Düşmanın animatoru
     protected Animator animator;
@@ -46,6 +47,14 @@ public abstract class Enemy : MonoBehaviour
 
     // Düşmanın saldırı yapailirliği
     protected bool canAttack = true;
+
+    private bool isHurt = false;
+
+    // Oyuncunun hasar alma durumunda yanıp sönmesini sağlyan değişkenler
+    private float resetCount = 0;
+    private float hurtTime = 0.1f;
+    private float currentHurtTime;
+
 
     // İlk değer atamaları
     private void Start()
@@ -99,9 +108,18 @@ public abstract class Enemy : MonoBehaviour
                 // Düşman birimi dinamik yani kuvvetlerden etkilenebilir bi hale getiriyoz
                 rgb.isKinematic = false;
                 // Açısal olarak kuvvet uygulamamıza sağlıyor
-                rgb.AddForceAtPosition(direction.normalized * 100, target.position);
-                // Hasar animasyonunu tetikliyor
-                animator.SetTrigger(EnemyAnimationParametres.hurt);
+                rgb.AddForceAtPosition(direction.normalized * 50, target.position);
+
+                if (hurtAnimation)
+                {
+                    // Hasar animasyonunu tetikliyor
+                    animator.SetTrigger(EnemyAnimationParametres.hurt);
+                }
+                else
+                {
+                    // Hasar alınabilirliği aktif hale getiriyoruz
+                    isHurt = true;
+                }
             }
         }
     }
@@ -124,9 +142,38 @@ public abstract class Enemy : MonoBehaviour
         Destroy(gameObject, 0.1f);
     }
 
+    protected void Hurt()
+    {
+        // Oyuncu hasar almış ise
+        if (isHurt)
+        {
+            currentHurtTime -= Time.deltaTime;
+            if (currentHurtTime <= 0)
+            {
+                switch (resetCount % 2)
+                {
+                    case 0:
+                        GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+                        break;
+                    case 1:
+                        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                        break;
+                }
+                resetCount++;
+                currentHurtTime = hurtTime;
+                if (resetCount == 2)
+                {
+                    HurtEnd();
+                }
+            }
+        }
+    }
+
     // Hasar alındığındaki geri tepmeyi durduyor
     private void HurtEnd()
     {
+        isHurt = false;
+        resetCount = 0;
         rgb.velocity = Vector2.zero;
         rgb.isKinematic = true;
     }

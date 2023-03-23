@@ -24,6 +24,8 @@ public class Mushroom : Enemy
         {
             Patrol();
         }
+
+        Hurt();
     }
 
     protected override void Patrol()

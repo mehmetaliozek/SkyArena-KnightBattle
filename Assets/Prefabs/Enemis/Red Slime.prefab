@@ -196,6 +196,7 @@ MonoBehaviour:
     m_Bits: 2048
   followingDistance: 4
   stoppingDistance: 0.5
+  hurtAnimation: 1
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
   m_ObjectHideFlags: 0
