@@ -32,6 +32,11 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     private void Update()
     {
+        Hurt();
+    }
+
+    private void Hurt()
+    {
         // Oyuncu hasar almış ise
         if (isHurt)
         {

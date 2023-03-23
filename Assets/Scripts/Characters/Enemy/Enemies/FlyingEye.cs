@@ -24,6 +24,8 @@ public class FlyingEye : Enemy
         {
             Patrol();
         }
+
+        Hurt();
     }
 
     protected override void Patrol()

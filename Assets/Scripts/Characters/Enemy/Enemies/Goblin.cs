@@ -26,6 +26,8 @@ public class Goblin : Enemy
         {
             Patrol();
         }
+
+        Hurt();
     }
 
     protected override void Patrol()

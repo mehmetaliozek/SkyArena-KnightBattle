@@ -42,6 +42,8 @@ public class DoubleHead : Enemy
                 BodyAttack(distance);
             }
         }
+
+        Hurt();
     }
 
     protected override void Patrol()
