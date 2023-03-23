@@ -196,10 +196,9 @@ MonoBehaviour:
     m_Bits: 2048
   followingDistance: 20
   stoppingDistance: 1
-  body: {fileID: 0}
-  attackTreeDistance: 3
-  attackTreeCoolDown: 0
-  attackTreeMoveSpeed: 0
+  bodyAttackDistance: 3
+  bodyAttackCoolDown: 5
+  bodyAttackMoveSpeed: 5
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,9 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9621327a0861d3e4497f03f20430f832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 150
   currentHealth: 0
-  attack: 0
+  attack: 30
   attackRange: 0.3
   attackRate: 0.2
   defense: 0
