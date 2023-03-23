@@ -29,10 +29,7 @@ public class HellBeast : Enemy
         {
             Attack();
         }
-        else
-        {
-            Patrol();
-        }
+        Patrol();
     }
 
     protected override void Attack()

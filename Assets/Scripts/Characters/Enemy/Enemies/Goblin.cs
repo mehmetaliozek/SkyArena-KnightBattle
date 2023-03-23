@@ -95,7 +95,7 @@ public class Goblin : Enemy
 
     private void SpawnBomb()
     {
-        bomb.GetComponent<Bomb>().attack = stats.attack;
+        bomb.GetComponent<Bomb>().attack = stats.attack * 3;
         bomb.GetComponent<Bomb>().playerLayers = playerLayers;
         Instantiate(bomb, transform.position, Quaternion.identity);
     }

@@ -73,4 +73,9 @@ public class Slime : Enemy
             currentAttackRate = stats.attackRate;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, 0.3f);
+    }
 }
