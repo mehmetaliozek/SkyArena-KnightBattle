@@ -23,9 +23,6 @@ public class Player : MonoBehaviour
     // Oyuncunun anlık saldırı hızı
     private float nextAttackTime;
 
-    // Oyuncunun can barı
-    public HealtBar healtBar;
-
     // İlk değer atamaları
     private void Start()
     {
@@ -36,7 +33,7 @@ public class Player : MonoBehaviour
         rgb = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>();
         stats.currentHealth = stats.maxHealth;
-        healtBar.SetMaxHealth(Player.instance.stats.maxHealth);
+        stats.healtBar.SetMaxHealth(stats.maxHealth);
     }
 
     private void Update()
@@ -117,7 +114,7 @@ public class Player : MonoBehaviour
             {
                 stats.currentHealth -= (damage - (damage * stats.defense));
                 PlayerAnimationEvents.instance.isHurt = true;
-                healtBar.SetHealth(Player.instance.stats.currentHealth);
+                stats.healtBar.SetHealth(stats.currentHealth);
             }
             else if (!PlayerAnimationEvents.instance.isDeath)
             {

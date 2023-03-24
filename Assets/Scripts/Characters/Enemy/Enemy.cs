@@ -67,6 +67,7 @@ public abstract class Enemy : MonoBehaviour
         stats = GetComponent<Stats>();
         stats.currentHealth = stats.maxHealth;
         currentAttackRate = stats.attackRate;
+        stats.healtBar.SetMaxHealth(stats.maxHealth);
     }
 
     protected abstract void AI();
@@ -121,6 +122,7 @@ public abstract class Enemy : MonoBehaviour
                     isHurt = true;
                 }
             }
+            stats.healtBar.SetHealth(stats.currentHealth);
         }
     }
 

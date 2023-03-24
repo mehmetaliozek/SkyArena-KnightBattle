@@ -3026,7 +3026,6 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
-  healtBar: {fileID: 1905182670}
 --- !u!212 &1672509003
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3143,6 +3142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9621327a0861d3e4497f03f20430f832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healtBar: {fileID: 1905182670}
   maxHealth: 100
   currentHealth: 0
   attack: 15
@@ -3392,7 +3392,7 @@ GameObject:
   - component: {fileID: 1905182671}
   - component: {fileID: 1905182670}
   m_Layer: 5
-  m_Name: HealtBar
+  m_Name: Player Healt Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
