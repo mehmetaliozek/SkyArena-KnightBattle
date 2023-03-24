@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+    // Oyuncunun can barı
+    public HealtBar healtBar;
     public float maxHealth;
     [HideInInspector] public float currentHealth;
     public float attack;
@@ -32,7 +34,7 @@ public class Stats : MonoBehaviour
                 value = moveSpeed;
                 break;
         }
-        
+
         return value;
     }
 }
