@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     // Saldırının uygulancağı layer
     [SerializeField] private LayerMask enemyLayers;
 
+    // Oyuncunun can barı
+    [SerializeField] private HealtBar healtBar;
+
     // Oyuncunun rigidbodysi
     private Rigidbody2D rgb;
 
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
 
     // Oyuncunun anlık saldırı hızı
     private float nextAttackTime;
+
 
     // İlk değer atamaları
     private void Start()
@@ -33,7 +37,7 @@ public class Player : MonoBehaviour
         rgb = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>();
         stats.currentHealth = stats.maxHealth;
-        stats.healtBar.SetMaxHealth(stats.maxHealth);
+        healtBar.SetMaxHealth(stats.maxHealth);
     }
 
     private void Update()
@@ -114,7 +118,7 @@ public class Player : MonoBehaviour
             {
                 stats.currentHealth -= (damage - (damage * stats.defense));
                 PlayerAnimationEvents.instance.isHurt = true;
-                stats.healtBar.SetHealth(stats.currentHealth);
+                healtBar.SetHealth(stats.currentHealth);
             }
             else if (!PlayerAnimationEvents.instance.isDeath)
             {

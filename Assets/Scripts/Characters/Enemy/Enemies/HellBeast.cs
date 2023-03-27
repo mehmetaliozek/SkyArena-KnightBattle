@@ -21,7 +21,7 @@ public class HellBeast : Enemy
 
     }
 
-    protected override void AI()
+    protected new void AI()
     {
         float distance = Vector2.Distance(transform.position, target.position);
         // Mesafe takip mesafesinden küçükse oyuncu takip edilcek değilse rastgele yürüycek
@@ -32,7 +32,7 @@ public class HellBeast : Enemy
         Patrol();
     }
 
-    protected override void Attack()
+    protected new void Attack()
     {
         currentAttackRate -= Time.deltaTime;
 
@@ -43,12 +43,7 @@ public class HellBeast : Enemy
         }
     }
 
-    protected override void FollowPlayer(float distance)
-    {
-        // Hell Beast ışınlandığından oyuncuyu takip etmesine gerek yok
-    }
-
-    protected override void Patrol()
+    protected new void Patrol()
     {
         teleportationTime -= Time.deltaTime;
         if (teleportationTime <= 0)

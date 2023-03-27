@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5038c5917b3b9498e45acb9e0721ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healtBar: {fileID: 7275847754556271116}
   attackPoint: {fileID: 6356565600449872458}
   playerLayers:
     serializedVersion: 2
@@ -210,7 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9621327a0861d3e4497f03f20430f832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healtBar: {fileID: 7275847754556271116}
   maxHealth: 20
   currentHealth: 0
   attack: 3
