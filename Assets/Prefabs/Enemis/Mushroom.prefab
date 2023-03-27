@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0893b0a681d22ed419c1b0b7de867842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healtBar: {fileID: 6374263029714253702}
   attackPoint: {fileID: 6825916502377128338}
   playerLayers:
     serializedVersion: 2
@@ -198,6 +199,7 @@ MonoBehaviour:
   followingDistance: 2
   stoppingDistance: 1
   hurtAnimation: 0
+  moreThanOneAttackAnimation: 1
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9621327a0861d3e4497f03f20430f832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healtBar: {fileID: 6374263029714253702}
   maxHealth: 70
   currentHealth: 0
   attack: 25

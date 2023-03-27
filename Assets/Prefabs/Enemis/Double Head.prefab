@@ -190,12 +190,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294afb2a22ed84847953ebcaab094a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healtBar: {fileID: 0}
   attackPoint: {fileID: 410824697239580358}
   playerLayers:
     serializedVersion: 2
     m_Bits: 2048
   followingDistance: 20
   stoppingDistance: 1
+  hurtAnimation: 0
+  moreThanOneAttackAnimation: 1
   bodyAttackDistance: 3
   bodyAttackCoolDown: 5
   bodyAttackMoveSpeed: 5

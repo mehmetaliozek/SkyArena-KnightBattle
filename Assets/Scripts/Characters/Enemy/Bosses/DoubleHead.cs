@@ -7,17 +7,8 @@ public class DoubleHead : Enemy
     [SerializeField] private float bodyAttackMoveSpeed;
     private float currentBodyAttackCoolDown;
     private bool isBodyAttackActive = false;
-
-    private void Update()
-    {
-        // Düşman hasar alabilirliği varsa AI çalışcak
-        if (canTakeDamage)
-        {
-            AI();
-        }
-    }
-
-    protected override void AI()
+    
+    protected new void AI()
     {
         LookAtPlayer(target.position.x);
         float distance = Vector2.Distance(transform.position, target.position);
@@ -46,28 +37,7 @@ public class DoubleHead : Enemy
         Hurt();
     }
 
-    protected override void Patrol()
-    {
-
-    }
-
-    protected override void FollowPlayer(float distance)
-    {
-        if (distance > stoppingDistance && canAttack)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, stats.moveSpeed * Time.deltaTime);
-        }
-        else if (Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers).Length == 0 && transform.position != newTarget.position)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, newTarget.position, stats.moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            Attack();
-        }
-    }
-
-    protected override void Attack()
+    protected new void Attack()
     {
         animator.SetFloat(EnemyAnimationParametres.velocity, 0);
         currentAttackRate -= Time.deltaTime;
