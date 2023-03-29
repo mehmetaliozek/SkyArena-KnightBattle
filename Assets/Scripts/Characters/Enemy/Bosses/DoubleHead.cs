@@ -7,7 +7,16 @@ public class DoubleHead : Enemy
     [SerializeField] private float bodyAttackMoveSpeed;
     private float currentBodyAttackCoolDown;
     private bool isBodyAttackActive = false;
-    
+
+    private void Update()
+    {
+        // Düşman hasar alabilirliği varsa AI çalışcak
+        if (canTakeDamage)
+        {
+            AI();
+        }
+    }
+
     protected new void AI()
     {
         LookAtPlayer(target.position.x);
@@ -84,22 +93,6 @@ public class DoubleHead : Enemy
         }
         currentAttackRate = stats.attackRate;
         canAttack = true;
-    }
-
-    private void TakeDamage(float damage)
-    {
-        if (canTakeDamage)
-        {
-            stats.currentHealth -= (damage - (damage * stats.defense));
-            if (stats.currentHealth <= 0)
-            {
-                // Düşmanın canı sıfırın altına inince hasar yemesini ve animasyonunun tekrar tekrar tetiklenmesini önlemek için hasar alabilirliğini konrol ediyoz
-                canTakeDamage = !canTakeDamage;
-                // Ölüm animasyonunu tetikliyor
-                animator.SetTrigger(EnemyAnimationParametres.death);
-            }
-            Debug.Log(stats.currentHealth);
-        }
     }
 
     private void OnDrawGizmos()

@@ -26,6 +26,8 @@ public abstract class Enemy : MonoBehaviour
     // Düşmanın birden fazla saldırı animasyonu varmı
     [SerializeField] protected bool moreThanOneAttackAnimation;
 
+    [SerializeField] private bool isBoss;
+
     // Düşmanın animatoru
     protected Animator animator;
 
@@ -181,6 +183,7 @@ public abstract class Enemy : MonoBehaviour
         if (canTakeDamage)
         {
             stats.currentHealth -= (damage - (damage * stats.defense));
+            healtBar.SetHealth(stats.currentHealth);
             if (stats.currentHealth <= 0)
             {
                 // Düşmanın canı sıfırın altına inince hasar yemesini ve animasyonunun tekrar tekrar tetiklenmesini önlemek için hasar alabilirliğini konrol ediyoz
@@ -190,11 +193,14 @@ public abstract class Enemy : MonoBehaviour
             }
             else
             {
-                Vector3 direction = transform.position - target.position;
-                // Düşman birimi dinamik yani kuvvetlerden etkilenebilir bi hale getiriyoz
-                rgb.isKinematic = false;
-                // Açısal olarak kuvvet uygulamamıza sağlıyor
-                rgb.AddForceAtPosition(direction.normalized * 50, target.position);
+                if (!isBoss)
+                {
+                    Vector3 direction = transform.position - target.position;
+                    // Düşman birimi dinamik yani kuvvetlerden etkilenebilir bi hale getiriyoz
+                    rgb.isKinematic = false;
+                    // Açısal olarak kuvvet uygulamamıza sağlıyor
+                    rgb.AddForceAtPosition(direction.normalized * 50, target.position);
+                }
 
                 if (hurtAnimation)
                 {
@@ -207,7 +213,6 @@ public abstract class Enemy : MonoBehaviour
                     isHurt = true;
                 }
             }
-            healtBar.SetHealth(stats.currentHealth);
         }
     }
 
