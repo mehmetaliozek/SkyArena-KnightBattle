@@ -11,7 +11,7 @@ public class FireBall : MonoBehaviour
     // Fire Ballun gideceği konum
     private Vector3 target;
     // Fire Ballun o konuma gidiş hızı
-    private float speed = 5f;
+    public float speed = 5f;
     // Fire Ballun bakacağı konum
     private Vector3 lookDir;
     // Fire Ballun o konuma gidiş açısı

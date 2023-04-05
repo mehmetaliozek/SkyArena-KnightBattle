@@ -230,8 +230,9 @@ public abstract class Enemy : MonoBehaviour
     // Düşman oyuncu tarafından öldürülürse animasyonun sonunda yok olmasını sağlıyor
     private void Death()
     {
-        WaveManager.instance.aliveEnemyCount--;
         Destroy(gameObject, 0.1f);
+        WaveManager.instance.aliveEnemyCount--;
+        
     }
 
     protected void Hurt()
