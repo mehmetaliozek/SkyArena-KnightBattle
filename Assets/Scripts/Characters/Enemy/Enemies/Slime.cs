@@ -10,7 +10,22 @@ public class Slime : Enemy
             AI();
         }
     }
-    
+    protected new void AI()
+    {
+        float distance = Vector2.Distance(transform.position, target.position);
+        
+        // Mesafe takip mesafesinden küçükse oyuncu takip edilcek değilse rastgele yürüycek
+        if (distance < followingDistance)
+        {
+            FollowPlayer(distance);
+        }
+        else
+        {
+            Patrol();
+        }
+        
+        
+    }
     protected new void FollowPlayer(float distance)
     {
         // Aşağıdaysa bu uzaklık belirttiğimiz durma uzaklığında büyükse oyuncuya yaklaşıyor değilse saldırıyor
