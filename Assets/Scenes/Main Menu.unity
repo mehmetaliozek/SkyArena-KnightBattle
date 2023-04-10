@@ -464,6 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   auido: {fileID: 1112693596}
   auido1: {fileID: 302772177}
+  auido2: {fileID: 0}
 --- !u!4 &214505538
 Transform:
   m_ObjectHideFlags: 0
@@ -477,7 +478,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &297528780
 GameObject:
@@ -709,12 +710,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302772177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 286.64804, y: 590.0407, z: -10.767286}
+  m_LocalPosition: {x: 745, y: 590.0407, z: -10.767286}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &312274743
 GameObject:
@@ -974,7 +975,7 @@ GameObject:
   - component: {fileID: 634862125}
   - component: {fileID: 634862126}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: FullScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2245,6 +2246,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 214505537}
+        m_TargetAssemblyTypeName: Auido, Assembly-CSharp
+        m_MethodName: AuidoChange2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1112693596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2269,7 @@ GameObject:
   - component: {fileID: 1112693598}
   - component: {fileID: 1112693597}
   m_Layer: 0
-  m_Name: Music
+  m_Name: MainMenuMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2371,7 +2384,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1185305691
 GameObject:

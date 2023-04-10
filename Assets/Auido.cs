@@ -8,6 +8,7 @@ public class Auido : MonoBehaviour
     //Ses ve Müzik İçin game objectler
     public GameObject auido;
     public GameObject auido1;
+    public GameObject auido2;
     //Slidera bağlı fonksiyon müzik için
     public void AuidoChange(float value){
         auido.GetComponent<AudioSource>().volume=value;
@@ -15,6 +16,9 @@ public class Auido : MonoBehaviour
     //Slidera bağlı fonkisyon ses efekti için
     public void AuidoChange1(float value){
         auido1.GetComponent<AudioSource>().volume=value;
+    }
+     public void AuidoChange2(float value){
+        auido2.GetComponent<AudioSource>().volume=value;
     }
     //Ses Efektini oynatma fonksiyonu
     public void AuidoEffectPlay(){
