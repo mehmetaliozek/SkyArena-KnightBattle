@@ -58,6 +58,7 @@ public class HellBeast : Enemy
     {
         fireBall.GetComponent<FireBall>().attack = stats.attack;
         fireBall.GetComponent<FireBall>().playerLayers = playerLayers;
+        fireBall.GetComponent<FireBall>().speed=5f;
         Instantiate(fireBall, attackPoint.position, Quaternion.identity);
     }
 

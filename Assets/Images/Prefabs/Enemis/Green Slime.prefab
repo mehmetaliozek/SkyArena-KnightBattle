@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549538884159247145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.075, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -197,8 +197,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   followingDistance: 4
-  stoppingDistance: 0.5
+  stoppingDistance: 0.3
   hurtAnimation: 1
+  moreThanOneAttackAnimation: 0
+  isBoss: 0
+  Effect: {fileID: 4834426413102451031, guid: 709da9e6a3e8e0348b991774d98ef82b, type: 3}
+  SlowEffectTime: 4
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,10 +64,12 @@ public abstract class Enemy : MonoBehaviour
     private float resetCount = 0;
     private float hurtTime = 0.1f;
     private float currentHurtTime;
+    public GameObject PlayerSlowEffect;
 
     // İlk değer atamaları
     private void Start()
     {
+        PlayerSlowEffect=Player.instance.SlimeEffect;
         animator = GetComponent<Animator>();
         rgb = GetComponent<Rigidbody2D>();
         moveSpot = EnemySpawner.instance.RandomPosition();
@@ -230,8 +232,9 @@ public abstract class Enemy : MonoBehaviour
     // Düşman oyuncu tarafından öldürülürse animasyonun sonunda yok olmasını sağlıyor
     private void Death()
     {
-        WaveManager.instance.aliveEnemyCount--;
         Destroy(gameObject, 0.1f);
+        WaveManager.instance.aliveEnemyCount--;
+        
     }
 
     protected void Hurt()
