@@ -2,12 +2,33 @@ using UnityEngine;
 
 public class Slime : Enemy
 {
+    private int rndnumber;
+    public float SlowEffectTime=4f;
+    private bool isSlowed=false;
+   
+     
+    
     private void Update()
     {
+        
         // Düşman hasar alabilirliği varsa AI çalışcak
         if (canTakeDamage)
         {
             AI();
+        }
+        if(isSlowed){
+            
+            SlowEffectTime-=Time.deltaTime;
+            if(SlowEffectTime<=0){
+                PlayerSlowEffect.SetActive(false);
+                isSlowed=false;
+                Player.instance.stats.moveSpeed=2.5f;
+                SlowEffectTime=4f;
+            }
+        }
+        else{
+            SlowEffectTime=4f;
+            
         }
     }
     protected new void AI()
@@ -49,6 +70,14 @@ public class Slime : Enemy
             if (Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, playerLayers).Length != 0)
             {
                 Player.instance.TakeDamage(stats.attack);
+                //Yavaşlama Efekti İçin
+                rndnumber=Random.Range(0,2);
+                if(rndnumber==0){
+                    PlayerSlowEffect.SetActive(true);
+                    isSlowed=true;
+                    Player.instance.stats.moveSpeed=1f;
+                }
+                
             }
             currentAttackRate = stats.attackRate;
         }

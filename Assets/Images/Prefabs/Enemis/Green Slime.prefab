@@ -201,6 +201,8 @@ MonoBehaviour:
   hurtAnimation: 1
   moreThanOneAttackAnimation: 0
   isBoss: 0
+  Effect: {fileID: 4834426413102451031, guid: 709da9e6a3e8e0348b991774d98ef82b, type: 3}
+  SlowEffectTime: 4
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
   m_ObjectHideFlags: 0
