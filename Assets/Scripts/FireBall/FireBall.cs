@@ -22,10 +22,13 @@ public class FireBall : MonoBehaviour
     private bool isExplosion = false;
     // Fire Ballun oyuncuya erken çarpışma durumunu kontrol ediyor
     private bool isCollision = false;
-
+    [HideInInspector] public bool isDamage=false;
+    public GameObject PlayerFireEffect;
+    public float FireffectTime=2f;
     private void Start()
     {
         // Fire Ballun gideceği konum ayarlanıyor
+        PlayerFireEffect=Player.instance.FireEffect;
         target = new Vector3(Player.instance.transform.position.x, Player.instance.transform.position.y);
         lookDir = target - transform.position;
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
@@ -34,6 +37,20 @@ public class FireBall : MonoBehaviour
 
     private void Update()
     {
+        if(isDamage==true){
+               
+           Player.instance.TakeDamage(0.001f);
+           FireffectTime-=Time.deltaTime;
+           if(FireffectTime<=0){
+              PlayerFireEffect.SetActive(false);
+              Destroy(gameObject,0.1f);
+              isDamage=false;
+              FireffectTime=2f;
+           }
+        }
+        else{
+            FireffectTime=2f;
+        }
         // Konuma 0.1 birim yaklaşınca Fire Ball patlıyor
         if (Vector2.Distance(transform.position, target) > 0.1 && !isCollision)
         {
@@ -59,6 +76,9 @@ public class FireBall : MonoBehaviour
     {
         if (Physics2D.OverlapCircleAll(transform.position, radius, playerLayers).Length != 0)
         {
+            isDamage=true;
+            Debug.Log("yandı");
+            PlayerFireEffect.SetActive(true);
             Player.instance.TakeDamage(attack);
         }
     }
@@ -66,11 +86,20 @@ public class FireBall : MonoBehaviour
     // Patlamadan sonra Fire Ball yok oluyor
     private void Death()
     {
-        Destroy(gameObject, 0.1f);
+       if(isDamage==true){
+          gameObject.transform.position=new Vector2(1000,1000);
+       }
+       else{
+        Destroy(gameObject);
+       }
+       
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+    private void FallDamage(){
+        
     }
 }

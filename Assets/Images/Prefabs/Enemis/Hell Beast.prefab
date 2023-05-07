@@ -224,8 +224,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   followingDistance: 20
-  stoppingDistance: 0
+  stoppingDistance: 1
   hurtAnimation: 0
+  moreThanOneAttackAnimation: 0
+  isBoss: 0
+  PlayerSlowEffect: {fileID: 0}
+  PlayerFireEffect: {fileID: 0}
   fireBall: {fileID: 7665986230123562464, guid: ec86cb75a230e934187a58837e2fb143, type: 3}
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
@@ -243,7 +247,7 @@ MonoBehaviour:
   currentHealth: 0
   attack: 10
   attackRange: 0
-  attackRate: 0.7
+  attackRate: 5
   defense: 0
   moveSpeed: 5
 --- !u!1001 &8793121878887046719

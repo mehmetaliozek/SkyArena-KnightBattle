@@ -64,12 +64,14 @@ public abstract class Enemy : MonoBehaviour
     private float resetCount = 0;
     private float hurtTime = 0.1f;
     private float currentHurtTime;
-    public GameObject PlayerSlowEffect;
-
+    public GameObject PlayerSlowEffect;//yavaşlama efekti tutmak için
+    public GameObject PlayerFireEffect;//ateş efekti tutmak için
+    
     // İlk değer atamaları
     private void Start()
     {
-        PlayerSlowEffect=Player.instance.SlimeEffect;
+        PlayerSlowEffect=Player.instance.SlimeEffect;//oyuncudan SlimeEffecti alıp oyuncuya verilecek Slime effecte atama yapıyorum
+        PlayerFireEffect=Player.instance.FireEffect;//oyuncudan FireEffecti alıp oyuncuya verilecek fire effecte atama yapıyorum
         animator = GetComponent<Animator>();
         rgb = GetComponent<Rigidbody2D>();
         moveSpot = EnemySpawner.instance.RandomPosition();

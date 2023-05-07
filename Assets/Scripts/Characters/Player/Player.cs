@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
 
     // Oyuncunun anlık saldırı hızı
     private float nextAttackTime;
-    public GameObject SlimeEffect;
+    public GameObject SlimeEffect;//slime effect tutmak için
+    public GameObject FireEffect;// fire effect tutmak için
 
 
     // İlk değer atamaları
