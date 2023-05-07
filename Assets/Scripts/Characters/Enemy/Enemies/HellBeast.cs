@@ -5,8 +5,18 @@ public class HellBeast : Enemy
     [SerializeField] private GameObject fireBall;
     private float teleportationTime = 0;
     private bool playerInFireTornado = false;
+    
+    
+
+    private void Awake() {
+        
+    }
+        
+        
+    
     private void Update()
     {
+        
         LookAtPlayer(target.position.x);
         // Düşman hasar alabilirliği varsa AI çalışcak
         if (canTakeDamage)
