@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class Options : MonoBehaviour
 {  
-     public GameObject gameObject;      
-     
+     public GameObject go;
 
      private void Update() {
           
      }
      //Ayarlar sekmesini açma kapama
      public void OffOptions(){
-      gameObject.SetActive(false);
+      go.SetActive(false);
      }
      public void OnOptions(){
-      gameObject.SetActive(true);
+      go.SetActive(true);
      }
 
      public void FullScreen(bool isfull){
