@@ -3,38 +3,40 @@ using UnityEngine;
 public class Slime : Enemy
 {
     private int rndnumber;
-    public float SlowEffectTime=4f;
-    private bool isSlowed=false;
-   
-     
-    
+    public float SlowEffectTime = 1.5f;
+    private bool isSlowed = false;
+
+
+
     private void Update()
     {
-        
+
         // Düşman hasar alabilirliği varsa AI çalışcak
         if (canTakeDamage)
         {
             AI();
         }
-        if(isSlowed){
-            
-            SlowEffectTime-=Time.deltaTime;
-            if(SlowEffectTime<=0){
+        if (isSlowed)
+        {
+
+            SlowEffectTime -= Time.deltaTime;
+            if (SlowEffectTime <= 0)
+            {
                 PlayerSlowEffect.SetActive(false);
-                isSlowed=false;
-                Player.instance.stats.moveSpeed=2.5f;
-                SlowEffectTime=4f;
+                isSlowed = false;
+                Player.instance.stats.moveSpeed = 2.5f;
+                SlowEffectTime = 1.5f;
             }
         }
-        else{
-            SlowEffectTime=4f;
-            
+        else
+        {
+            SlowEffectTime = 1.5f;
         }
     }
     protected new void AI()
     {
         float distance = Vector2.Distance(transform.position, target.position);
-        
+
         // Mesafe takip mesafesinden küçükse oyuncu takip edilcek değilse rastgele yürüycek
         if (distance < followingDistance)
         {
@@ -44,8 +46,8 @@ public class Slime : Enemy
         {
             Patrol();
         }
-        
-        
+
+
     }
     protected new void FollowPlayer(float distance)
     {
@@ -60,6 +62,10 @@ public class Slime : Enemy
         }
     }
 
+    float sloeTime = 1.5f;
+
+    float currentSlowTime = 0;
+
     protected new void Attack()
     {
         currentAttackRate -= Time.deltaTime;
@@ -71,13 +77,14 @@ public class Slime : Enemy
             {
                 Player.instance.TakeDamage(stats.attack);
                 //Yavaşlama Efekti İçin
-                rndnumber=Random.Range(0,2);
-                if(rndnumber==0){
+                rndnumber = Random.Range(0, 2);
+                if (rndnumber == 0)
+                {
                     PlayerSlowEffect.SetActive(true);
-                    isSlowed=true;
-                    Player.instance.stats.moveSpeed=1f;
+                    isSlowed = true;
+                    Player.instance.stats.moveSpeed = 1f;
                 }
-                
+
             }
             currentAttackRate = stats.attackRate;
         }
