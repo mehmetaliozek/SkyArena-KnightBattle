@@ -6,11 +6,11 @@ public class EnemySpawner : MonoBehaviour
     public static EnemySpawner instance;
 
     // Spawnlanan düşmanın prefabı
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject[] enemies;
 
     // Düşamların üzerinde spawnlancağı bölgenin collideri
     [SerializeField] private PolygonCollider2D spawnArea;
-    
+
     // Spawnlanan düşman sayısı
     [HideInInspector] public int createdEnemyCount = 0;
 
@@ -22,19 +22,19 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnEnemy(int enemyCount)
+    public void SpawnEnemy(int enemyCount, int[] indexes)
     {
         // İstenilen düşman sayısını ulaşılıncaya kadra düşman spawn edilmesi sağlanıyor
         while (createdEnemyCount != enemyCount)
         {
-            Instantiate(enemy, RandomPosition(), Quaternion.identity);
+            Instantiate(enemies[Random.Range(indexes[0], indexes[1])], RandomPosition(), Quaternion.identity);
             createdEnemyCount++;
         }
     }
-    
+
     public Vector2 RandomPosition()
     {
-        Vector2 spawnPosition = new Vector2();      
+        Vector2 spawnPosition = new Vector2();
         while (true)
         {
             // Düşmanların spawnlancağı konumun x ve y sini random atıyoruz

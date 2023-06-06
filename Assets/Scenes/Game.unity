@@ -1518,7 +1518,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414f2a18fc5d88148b48f3f009d96e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7665986230123562464, guid: c1c6b3df796990c4096bc34a2f4b0576, type: 3}
+  enemies:
+  - {fileID: 7665986230123562464, guid: db92359375b73f545ac1766fad8889f5, type: 3}
+  - {fileID: 7665986230123562464, guid: ba308b4c4b9684c4b857af58bc916b7c, type: 3}
+  - {fileID: 7665986230123562464, guid: 607bc0e9504d00d4eb4fe6b40b69e6e5, type: 3}
+  - {fileID: 7665986230123562464, guid: 0926d57b7c7eebd4fb0db0ddfaf7c872, type: 3}
+  - {fileID: 7665986230123562464, guid: 8549e5159718b9440af806700bad45e3, type: 3}
+  - {fileID: 7665986230123562464, guid: 7d8c9c28a5da51e4dbdf9a5236558cc3, type: 3}
+  - {fileID: 7665986230123562464, guid: be8c096c014094c4c851117633ee55fc, type: 3}
+  - {fileID: 7665986230123562464, guid: c1c6b3df796990c4096bc34a2f4b0576, type: 3}
+  - {fileID: 7665986230123562464, guid: f059f4b667cea984cabe1e43f227bd9a, type: 3}
   spawnArea: {fileID: 251074434}
   createdEnemyCount: 0
 --- !u!1 &480150522
@@ -4690,10 +4699,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  attack: 15
+  attack: 1000
   attackRange: 0.5
   attackRate: 0.5
-  defense: 0
+  defense: 1
   moveSpeed: 2.5
 --- !u!114 &1672509008
 MonoBehaviour:

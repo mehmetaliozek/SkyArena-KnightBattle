@@ -38,6 +38,21 @@ public class WaveManager : MonoBehaviour
         {1,1},
     };
 
+    private int[,] enemyIndexes = new int[10, 2]{
+        {0,1},
+        {0,2},
+        {0,3},
+        {2,4},
+        {2,5},
+        {3,5},
+        {3,6},
+        {4,7},
+        {5,8},
+        {8,9},
+    };
+
+    private int[] x = new int[2] { 0, 0 };
+
     // Dalga aralarında geçen süre
     private float time = 0;
 
@@ -48,7 +63,9 @@ public class WaveManager : MonoBehaviour
             instance = this;
         }
         UpdateEnemyCount();
-        EnemySpawner.instance.SpawnEnemy(waveInfo[currentWave, 0]);
+        x[0] = enemyIndexes[currentWave, 0];
+        x[1] = enemyIndexes[currentWave, 1];
+        EnemySpawner.instance.SpawnEnemy(waveInfo[currentWave, 0], x);
     }
 
     private void Update()
@@ -72,7 +89,10 @@ public class WaveManager : MonoBehaviour
                 // Yeni dalgaya geçtiğimiz için yaratılan düşman sayısını sıfırlıyoruz
                 EnemySpawner.instance.createdEnemyCount = 0;
                 // Düşman oluşturma fonksiyonu
-                EnemySpawner.instance.SpawnEnemy(waveInfo[currentWave, 0]);
+
+                x[0] = enemyIndexes[currentWave, 0];
+                x[1] = enemyIndexes[currentWave, 1];
+                EnemySpawner.instance.SpawnEnemy(waveInfo[currentWave, 0], x);
                 time = 2;
             }
         }
