@@ -62,10 +62,6 @@ public class Slime : Enemy
         }
     }
 
-    float sloeTime = 1.5f;
-
-    float currentSlowTime = 0;
-
     protected new void Attack()
     {
         currentAttackRate -= Time.deltaTime;

@@ -148,6 +148,6 @@ public class Player : MonoBehaviour
         PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.fall);
     }
     public void PlayAuido(){
-         AudioManager.GetComponent<GameAuido>().SwordEffectPlay();
+        //  AudioManager.GetComponent<GameAuido>().SwordEffectPlay();
     }
 }

@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour
     private int currentSubwave = 0;
 
     // Dalgaların kaç tane alt dalgası olcağını ve kaç düşman çıkcağını tutan dizi
-    private int[,] waveInfo = new int[20, 2]{
+    private int[,] waveInfo = new int[10, 2]{
         {5,1},
         {6,1},
         {7,1},
@@ -26,16 +26,16 @@ public class WaveManager : MonoBehaviour
         {7,3},
         {1,1},
 
-        {5,4},
-        {6,4},
-        {7,4},
-        {5,5},
-        {6,5},
-        {7,5},
-        {5,6},
-        {6,6},
-        {7,6},
-        {1,1},
+        // {5,4},
+        // {6,4},
+        // {7,4},
+        // {5,5},
+        // {6,5},
+        // {7,5},
+        // {5,6},
+        // {6,6},
+        // {7,6},
+        // {1,1},
     };
 
     private int[,] enemyIndexes = new int[10, 2]{
@@ -48,7 +48,7 @@ public class WaveManager : MonoBehaviour
         {3,6},
         {4,7},
         {5,8},
-        {8,9},
+        {8,10},//Boss Fight
     };
 
     private int[] x = new int[2] { 0, 0 };
@@ -83,6 +83,10 @@ public class WaveManager : MonoBehaviour
                 {
                     currentWave++;
                     currentSubwave = 0;
+                    if (currentWave == waveInfo.GetLength(0))
+                    {
+                        Time.timeScale = 0;
+                    }
                     Debug.Log("Dalga: " + (currentWave + 1));
                 }
                 UpdateEnemyCount();
