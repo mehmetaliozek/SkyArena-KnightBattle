@@ -25,4 +25,12 @@ public class HealtBar : MonoBehaviour
         slider.value = health;
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
+
+    public void UpdateHealtBar(float maxHealth, float currentHealth)
+    {
+        slider.maxValue = maxHealth;
+        slider.value = currentHealth;
+        
+        fill.color = gradient.Evaluate(slider.normalizedValue);
+    }
 }
