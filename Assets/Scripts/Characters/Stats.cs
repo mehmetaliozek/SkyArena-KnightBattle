@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Stats : MonoBehaviour
@@ -33,6 +34,18 @@ public class Stats : MonoBehaviour
                 break;
         }
 
-        return value;
+        return (float)Math.Round((decimal)value, 2);
+    }
+
+    public void updateStat()
+    {
+        float percent = currentHealth / maxHealth;
+        maxHealth += maxHealth * 0.15f;
+        currentHealth = maxHealth * percent;
+        Player.instance.UpdateHealtBar();
+        attack += attack * 0.2f;
+        attackRate -= attackRate * 0.0225f;
+        defense += defense * 0.2f;
+        moveSpeed += moveSpeed * 0.025f;
     }
 }

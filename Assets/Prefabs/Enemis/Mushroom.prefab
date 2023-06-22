@@ -200,6 +200,9 @@ MonoBehaviour:
   stoppingDistance: 1
   hurtAnimation: 0
   moreThanOneAttackAnimation: 1
+  isBoss: 0
+  PlayerSlowEffect: {fileID: 0}
+  PlayerFireEffect: {fileID: 0}
 --- !u!114 &-7637293021630487085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7250390515743307400, guid: 0d5e2ed700d6fbc48be3535788bd9720, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7250390515743307400, guid: 0d5e2ed700d6fbc48be3535788bd9720, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -309,6 +312,10 @@ PrefabInstance:
     - target: {fileID: 7250390515743307400, guid: 0d5e2ed700d6fbc48be3535788bd9720, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250390515743307402, guid: 0d5e2ed700d6fbc48be3535788bd9720, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7250390515743307415, guid: 0d5e2ed700d6fbc48be3535788bd9720, type: 3}
       propertyPath: m_Name
