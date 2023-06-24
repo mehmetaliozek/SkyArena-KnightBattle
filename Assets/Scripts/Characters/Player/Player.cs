@@ -4,7 +4,11 @@ public class Player : MonoBehaviour
 {
     // Sahnede bulunan Player scripti
     public static Player instance;
-    public GameObject AudioManager;
+
+    public GameObject victory;
+    public GameObject defeat;
+
+    // public GameObject AudioManager;
 
     // Statların tutulduğu değişken
     [HideInInspector] public Stats stats;

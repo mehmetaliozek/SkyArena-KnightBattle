@@ -88,12 +88,13 @@ public class WaveManager : MonoBehaviour
                     if (currentWave == waveInfo.GetLength(0))
                     {
                         Time.timeScale = 0;
+                        Player.instance.victory.SetActive(true);
                     }
                     Player.instance.stats.updateStat();
 
                     if (first)
                     {
-                        currentWave = 0;
+                        currentWave = 9;
                         currentSubwave = 0;
                         first = false;
                     }

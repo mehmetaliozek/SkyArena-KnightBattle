@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -29,6 +30,12 @@ public class Game : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        audioManager.playAudioEffect();
+    }
+
+    public void Exit(){
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
         audioManager.playAudioEffect();
     }
 }
