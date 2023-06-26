@@ -94,7 +94,7 @@ public class WaveManager : MonoBehaviour
 
                     if (first)
                     {
-                        currentWave = 9;
+                        currentWave = 0;
                         currentSubwave = 0;
                         first = false;
                     }
