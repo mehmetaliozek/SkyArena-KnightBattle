@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     // Oyuncunun can barı
     [SerializeField] private HealtBar healtBar;
+    [SerializeField] private FixedJoystick joystick;    
 
     // Oyuncunun rigidbodysi
     private Rigidbody2D rgb;
@@ -56,8 +57,10 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        Debug.Log(joystick.Horizontal);
+       
+        float x = joystick.Horizontal;
+        float y = joystick.Vertical;
 
         //Karakter hareketi eklendi ve speed ile hızı kontrol ediliyor
         if (PlayerAnimationEvents.instance.canMove)
@@ -67,23 +70,27 @@ public class Player : MonoBehaviour
         }
 
         //Animasyon kontrolu
-        if (Mathf.Abs(x) > 0)
+        if (Mathf.Abs(x) > 0.1)
         {
-            PlayerAnimationEvents.instance.animator.SetFloat(PlayerAnimationParametres.velocity, Mathf.Abs(Input.GetAxis("Horizontal")));
+            PlayerAnimationEvents.instance.animator.SetFloat(PlayerAnimationParametres.velocity, Mathf.Abs(joystick.Horizontal));
         }
-        else if (Mathf.Abs(y) > 0)
+        else if (Mathf.Abs(y) > 0.1)
         {
-            PlayerAnimationEvents.instance.animator.SetFloat(PlayerAnimationParametres.velocity, Mathf.Abs(Input.GetAxis("Vertical")));
+            PlayerAnimationEvents.instance.animator.SetFloat(PlayerAnimationParametres.velocity, Mathf.Abs(joystick.Vertical));
+        }
+        else{
+            PlayerAnimationEvents.instance.animator.SetFloat(PlayerAnimationParametres.velocity, 0);
         }
 
         if (!PlayerAnimationEvents.instance.isDeath)
         {
             //Karakterin dönmesi
-            if (Input.GetAxisRaw("Horizontal") == -1)
+            
+            if (joystick.Horizontal < 0)
             {
                 transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             }
-            else if (Input.GetAxisRaw("Horizontal") == 1)
+            else if (joystick.Horizontal >0)
             {
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
