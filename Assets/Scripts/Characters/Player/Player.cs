@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     // Oyuncunun can barı
     [SerializeField] private HealtBar healtBar;
-    [SerializeField] private FixedJoystick joystick;    
+    [SerializeField] private FixedJoystick joystick;
 
     // Oyuncunun rigidbodysi
     private Rigidbody2D rgb;
@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     private float nextAttackTime;
     public GameObject SlimeEffect;//slime effect tutmak için
     public GameObject FireEffect;// fire effect tutmak için
+
+    public bool attack = false;
+    public bool dash = false;
 
 
     // İlk değer atamaları
@@ -51,14 +54,12 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Move();
-        Attack();
-        Roll();
+        // Attack();
+        // Roll();
     }
 
     private void Move()
     {
-        Debug.Log(joystick.Horizontal);
-       
         float x = joystick.Horizontal;
         float y = joystick.Vertical;
 
@@ -78,28 +79,29 @@ public class Player : MonoBehaviour
         {
             PlayerAnimationEvents.instance.animator.SetFloat(PlayerAnimationParametres.velocity, Mathf.Abs(joystick.Vertical));
         }
-        else{
+        else
+        {
             PlayerAnimationEvents.instance.animator.SetFloat(PlayerAnimationParametres.velocity, 0);
         }
 
         if (!PlayerAnimationEvents.instance.isDeath)
         {
             //Karakterin dönmesi
-            
+
             if (joystick.Horizontal < 0)
             {
                 transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             }
-            else if (joystick.Horizontal >0)
+            else if (joystick.Horizontal > 0)
             {
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
         }
     }
 
-    private void Attack()
+    public void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerAnimationEvents.instance.canAttack && Time.time >= nextAttackTime)
+        if (PlayerAnimationEvents.instance.canAttack && Time.time >= nextAttackTime)
         {
 
             PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.attack);
@@ -111,16 +113,15 @@ public class Player : MonoBehaviour
                 // Topladığımız neslerin hepsinde TakeDamage fonskiyonunu çağırıp hasar almalarını sağlıyoz
                 // Enemyden miras almış class TakeDamage fonksiyonunu çalıştırması için mesaj atıyoz
                 enemy.SendMessage(EnemyFunctions.takeDamage, stats.attack);
-
             }
 
             nextAttackTime = Time.time + stats.attackRate;
         }
     }
 
-    private void Roll()
+    public void Roll()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerAnimationEvents.instance.canRoll)
+        if (PlayerAnimationEvents.instance.canRoll)
         {
             PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.roll);
         }
