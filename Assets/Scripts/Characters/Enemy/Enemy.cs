@@ -235,8 +235,7 @@ public abstract class Enemy : MonoBehaviour
     private void Death()
     {
         Destroy(gameObject, 0.1f);
-        WaveManager.instance.aliveEnemyCount--;
-        
+        WaveManager.instance.aliveEnemyCount--;        
     }
 
     protected void Hurt()

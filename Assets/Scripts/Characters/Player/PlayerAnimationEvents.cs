@@ -108,5 +108,6 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void DeathEnd()
     {
         animator.speed = 0;
+        Player.instance.defeat.SetActive(true);
     }
 }

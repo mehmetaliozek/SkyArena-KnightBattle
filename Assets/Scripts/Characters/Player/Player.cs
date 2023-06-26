@@ -4,7 +4,11 @@ public class Player : MonoBehaviour
 {
     // Sahnede bulunan Player scripti
     public static Player instance;
-    public GameObject AudioManager;
+
+    public GameObject victory;
+    public GameObject defeat;
+
+    // public GameObject AudioManager;
 
     // Statların tutulduğu değişken
     [HideInInspector] public Stats stats;
@@ -90,9 +94,9 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerAnimationEvents.instance.canAttack && Time.time >= nextAttackTime)
         {
-            
+
             PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.attack);
-            
+
             // Beli bir yarıçapta Enemy layerına sahip nesneleri topluyoruz
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, stats.attackRange, enemyLayers);
             foreach (Collider2D enemy in hitEnemies)
@@ -100,9 +104,9 @@ public class Player : MonoBehaviour
                 // Topladığımız neslerin hepsinde TakeDamage fonskiyonunu çağırıp hasar almalarını sağlıyoz
                 // Enemyden miras almış class TakeDamage fonksiyonunu çalıştırması için mesaj atıyoz
                 enemy.SendMessage(EnemyFunctions.takeDamage, stats.attack);
-                
+
             }
-            
+
             nextAttackTime = Time.time + stats.attackRate;
         }
     }
@@ -147,7 +151,9 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
         PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.fall);
     }
-    public void PlayAuido(){
-         AudioManager.GetComponent<GameAuido>().SwordEffectPlay();
+
+    public void UpdateHealtBar()
+    {
+        healtBar.UpdateHealtBar(stats.maxHealth, stats.currentHealth);
     }
 }

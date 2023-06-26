@@ -201,6 +201,8 @@ MonoBehaviour:
   hurtAnimation: 0
   moreThanOneAttackAnimation: 1
   isBoss: 1
+  PlayerSlowEffect: {fileID: 0}
+  PlayerFireEffect: {fileID: 0}
   bodyAttackDistance: 3
   bodyAttackCoolDown: 5
   bodyAttackMoveSpeed: 5
@@ -325,6 +327,22 @@ PrefabInstance:
     - target: {fileID: 3171087747975174802, guid: a216632392e9cec47a285dfbb4515c35, type: 3}
       propertyPath: m_text
       value: Double Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469211930592864223, guid: a216632392e9cec47a285dfbb4515c35, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469211930592864223, guid: a216632392e9cec47a285dfbb4515c35, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469211930592864223, guid: a216632392e9cec47a285dfbb4515c35, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469211930592864223, guid: a216632392e9cec47a285dfbb4515c35, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8650242055502301011, guid: a216632392e9cec47a285dfbb4515c35, type: 3}
       propertyPath: m_Name
