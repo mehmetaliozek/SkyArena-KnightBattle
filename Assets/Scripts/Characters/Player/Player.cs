@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
     public bool attack = false;
     public bool dash = false;
 
+    private bool isFall = false;
+    private float fallTime = 2f;
+
 
     // İlk değer atamaları
     private void Start()
@@ -54,8 +57,16 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Move();
-        // Attack();
-        // Roll();
+        if (isFall)
+        {
+            fallTime -= Time.deltaTime;
+            if (fallTime <= 0)
+            {
+                Time.timeScale = 0;
+                healtBar.SetHealth(0);
+                defeat.SetActive(true);
+            }
+        }
     }
 
     private void Move()
@@ -157,6 +168,7 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
         gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
         gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+        isFall = true;
         PlayerAnimationEvents.instance.animator.SetTrigger(PlayerAnimationParametres.fall);
     }
 

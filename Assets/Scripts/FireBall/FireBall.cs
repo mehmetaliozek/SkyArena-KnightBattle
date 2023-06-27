@@ -78,9 +78,12 @@ public class FireBall : MonoBehaviour
     {
         if (Physics2D.OverlapCircleAll(transform.position, radius, playerLayers).Length != 0)
         {
-            isDamage = true;
-            PlayerFireEffect.SetActive(true);
-            Player.instance.TakeDamage(attack);
+            if (PlayerAnimationEvents.instance.canTakeDamage)
+            {
+                isDamage = true;
+                PlayerFireEffect.SetActive(true);
+                Player.instance.TakeDamage(attack);
+            }
         }
     }
 
@@ -101,9 +104,5 @@ public class FireBall : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
-    }
-    private void FallDamage()
-    {
-
     }
 }
